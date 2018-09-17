@@ -10,5 +10,8 @@
   "license": "ISC",
 
   "build-js": "browserify –t [babelify] index.js –o bundle.js",
-  "build": "npm run build-js"
+  "build": "npm run build-js",
+
+  "watch-js": "watchify -t [babelify] index.js -o bundle.js"
+  "watch": "npm run watch-js"
 }
