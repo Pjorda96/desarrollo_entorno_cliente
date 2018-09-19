@@ -2,8 +2,8 @@ class MyClass {
   constructor(x){
     this.x = x;
   }
-  multiply(){
-    return this.x*2;
+  multiply(y){
+    return this.x*y;
   }
 }
 module.exports.MyClass=MyClass;
