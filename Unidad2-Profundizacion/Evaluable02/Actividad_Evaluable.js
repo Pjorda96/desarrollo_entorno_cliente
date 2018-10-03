@@ -1,11 +1,11 @@
 'use strict';
-
 const rl = require('readline-sync');
 //var db = require('./db').db;
 const ScientificPatent = require('./ScientificPatents').ScientificPatents;
+const ScientificArticles = require('./ScientificArticles').ScientificArticles;
 
 
 
-let publication = new ScientificPatent('Articulo', 'Pablo', 'Josep', 'Sergio', 2018, 2020);
+let publication = new ScientificArticles('Article', 259, 2018, 3, 'Pablo, Elliot');
 
-console.log(publication);
+console.log(publication.isArticle());
