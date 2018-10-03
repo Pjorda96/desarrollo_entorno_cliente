@@ -1,19 +1,17 @@
+'use strict';
+
 class Publications{
 
-    constructor(title, ...author){
-
-        //var publication = new Map();
-        var authors = new Map();
-        let cont = 0;
-
+    /**
+     * Class Publications
+     * 
+     * @param {String} title 
+     * @param  {...String} author 
+     */
+    constructor(title, ...author) {
         this.title = title;
-
-        for (auth in author){
-            authors.set(cont, auth);
-            cont++;
-        }
-
-        this.author = authors;
+        this.author = author;
     }
-
 }
+
+exports.Publications = Publications;

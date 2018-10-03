@@ -1,29 +1,11 @@
 'use strict';
-//require('db.json');
-
-//require('Publications.js');
-class Publications {
-
-    constructor(title, ...author) {
-
-        //var publication = new Map();
-        var authors = new Map();
-        let cont = 0;
-
-        this.title = title;
-
-        for (auth in author) {
-            authors.set(cont, auth);
-            cont++;
-        }
-
-        this.author = authors;
-    }
-
-}
 
 const rl = require('readline-sync');
+//var db = require('./db').db;
+const ScientificPatent = require('./ScientificPatents').ScientificPatents;
 
 
-publication = new Publications('putitas varias', 'Josep' , 'Sergio');
+
+let publication = new ScientificPatent('Articulo', 'Pablo', 'Josep', 'Sergio', 2018, 2020);
+
 console.log(publication);
