@@ -27,10 +27,10 @@ class Coche {
 let listaCoches = [];
 let salir = false;
 while (!salir) {
-    console.log('Bienvenidos al sistema de gestiÃ³n del concesionario');
+    console.log('Bienvenidos al sistema de gestion del concesionario');
     console.log('1) Dar de alta coche');
     console.log('2) Dar de baja un coche');
-    console.log('3) Buscar un coche y mostrar informaciÃ³n');
+    console.log('3) Buscar un coche y mostrar informacion');
     console.log('-1) Salir del sistema');
     let opcion = readline.questionInt('Por favor, seleccione una de estas opciones: ');
     if (opcion === 1) {
