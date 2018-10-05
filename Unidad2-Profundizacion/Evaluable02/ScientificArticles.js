@@ -12,7 +12,7 @@ class ScientificArticles extends Publication {
      * @param {Number} numMenciones
      * @param {...String} author
      */
-    constructor(title, numPags, anyoPublicacion, numMenciones, ...author) {
+    constructor(title, numPags, anyoPublicacion, numMenciones, author) {
         super(title, author);
         this.numPags = numPags;
         this.anyoPublicacion = anyoPublicacion;

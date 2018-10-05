@@ -39,7 +39,7 @@ class ReviewArticles extends ScientificArticles {
     }
 
     /**
-     * @returns {Number} editorial
+     * @returns {String} editorial
      */
     getEditorial() {
         return this.editorial;
@@ -47,7 +47,7 @@ class ReviewArticles extends ScientificArticles {
 
     /**
      * 
-     * @param {Number} editorial
+     * @param {String} editorial
      */
     setEditorial(editorial) {
         this.editorial = editorial;
