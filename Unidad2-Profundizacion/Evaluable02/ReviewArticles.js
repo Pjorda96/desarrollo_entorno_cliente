@@ -21,6 +21,7 @@ class ReviewArticles extends ScientificArticles {
         this.revistaTitle = revistaTitle;
         this.editorial = editorial;
         this.impactFactor = impactFactor;
+        this._review = true;
     }
 
     /**
@@ -66,6 +67,10 @@ class ReviewArticles extends ScientificArticles {
      */
     setImpactFactor(impactFactor) {
         this.impactFactor = impactFactor;
+    }
+
+    isReview() {
+        return true;
     }
 }
 

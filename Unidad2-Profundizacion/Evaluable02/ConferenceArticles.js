@@ -21,6 +21,7 @@ class ConferenceArticles extends ScientificArticles {
         this.conferenceBook = conferenceBook;
         this.conferenceName = conferenceName;
         this.conferencePlace = conferencePlace;
+        this._conference = true;
     }
 
     /**
@@ -66,6 +67,10 @@ class ConferenceArticles extends ScientificArticles {
      */
     setConferencePlace(conferencePlace) {
         this.conferencePlace = conferencePlace;
+    }
+
+    isConference() {
+        return true;
     }
 }
 
