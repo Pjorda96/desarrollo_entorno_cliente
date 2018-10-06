@@ -87,6 +87,7 @@ while (!salir) {
     } else if (opcion === 3) {
         //Modificar autores
         let titulo = readline.question('Por favor, introduce un titulo: ');
+        let encontrado = false;
         for (let i = 0; i < publications.length; i++) {
             let publication = publications[i];
             if (publication.title === titulo) {
@@ -110,6 +111,7 @@ while (!salir) {
         '1) Articulo de revista\n' +
         '2) Articulo de conferencia\n' +
         'Tipo: ');
+        let encontrado = false;
         let titulo = readline.question('Por favor, introduce un titulo: ');
 
         if (type === 1) {
@@ -145,6 +147,8 @@ while (!salir) {
                     let reviewArticle = new ReviewArticle(titulo, numPags, anyoPublicacion,
                         numMenciones, revistaTitle, editorial, impactFactor, autor);
                     publications.push(reviewArticle);
+
+                    encontrado = true;
 
                     break;
                 }
@@ -184,6 +188,8 @@ while (!salir) {
                         conferenceBookTitle, conferenceName, conferencePlace, autor);
                     publications.push(conferenceArticle);
 
+                    encontrado = true;
+
                     break;
                 }
             }
@@ -198,15 +204,7 @@ while (!salir) {
         }
     } else if (opcion === 5) {
         //Modificar patentes cientificas
-        let matricula = readline.question('Por favor, introduce una matricula: ');
-        let titulo = readline.question('Introduce el titulo: ');
-        let anyoPublicacion = readline.questionInt('Introduce el año de publicacion: ');
-        let anyoVencimiento = readline.questionInt('Introduce el año de vencimiento: ');
-        let autor = readline.question('Introduce el autor: ');
-
-        let scientificPatent = new ScientificPatent(titulo, anyoPublicacion, anyoVencimiento, autor);
-        publications.push(scientificPatent);
-
+        let encontrado = false;
         for (let i = 0; i < publications.length; i++) {
             let publication = publications[i];
             if (publication.title === titulo && publication.isConference === true) {
@@ -226,6 +224,8 @@ while (!salir) {
 
                 let scientificPatent = new ScientificPatent(titulo, anyoPublicacion, anyoVencimiento, autor);
                 publications.push(scientificPatent);
+
+                encontrado = true;
 
                 break;
             }
@@ -251,6 +251,7 @@ while (!salir) {
         salir = true;
     } else if (opcion === -7777) {
         //borrar la db
+        console.log('Base de datos borrada');
         salir = true;
     }
 
