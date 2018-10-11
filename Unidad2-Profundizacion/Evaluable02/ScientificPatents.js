@@ -52,7 +52,7 @@ class ScientificPatents extends Publication {
      * @returns {Boolean} true
      */
     isPatent(){
-        return true;
+        return this._patent;
     }
 }
 

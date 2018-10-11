@@ -70,7 +70,7 @@ class ReviewArticles extends ScientificArticles {
     }
 
     isReview() {
-        return true;
+        return this._review;
     }
 }
 

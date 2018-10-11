@@ -69,7 +69,7 @@ class ScientificArticles extends Publication {
      * @returns {Boolean} true
      */
     isArticle() {
-        return true;
+        return this._article;
     }
 }
 

@@ -70,7 +70,7 @@ class ConferenceArticles extends ScientificArticles {
     }
 
     isConference() {
-        return true;
+        return this._conference;
     }
 }
 
