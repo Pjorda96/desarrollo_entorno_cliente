@@ -6,12 +6,12 @@ class ScientificPatents extends Publication {
 
     /**
      * 
-     * @param {String} title  
+     * @param {String} title
+     * @param {Array} author
      * @param {Number} anyoPublicacion 
      * @param {Number} anyoVencimiento
-     * @param {...String} author
      */
-    constructor(title, anyoPublicacion, anyoVencimiento, ...author) {
+    constructor(title, author, anyoPublicacion, anyoVencimiento) {
         super(title, author);
         this.anyoPublicacion = anyoPublicacion;
         this.anyoVencimiento = anyoVencimiento;

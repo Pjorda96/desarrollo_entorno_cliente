@@ -7,17 +7,17 @@ class ReviewArticles extends ScientificArticles {
     /**
      * 
      * @param {String} title
+     * @param {Array} author
      * @param {Number} numPags 
      * @param {Number} anyoPublicacion
      * @param {Number} numMenciones
      * @param {String} revistaTitle 
      * @param {String} editorial
      * @param {Number} impactFactor
-     * @param {...String} author
      */
-    constructor(title, numPags, anyoPublicacion, numMenciones, revistaTitle,
-        editorial, impactFactor, ...author) {
-        super(title, numPags, anyoPublicacion, numMenciones, author);
+    constructor(title, author, numPags, anyoPublicacion, numMenciones, revistaTitle,
+        editorial, impactFactor) {
+        super(title, author, numPags, anyoPublicacion, numMenciones);
         this.revistaTitle = revistaTitle;
         this.editorial = editorial;
         this.impactFactor = impactFactor;

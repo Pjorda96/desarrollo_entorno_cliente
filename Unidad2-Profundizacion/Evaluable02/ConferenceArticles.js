@@ -7,17 +7,17 @@ class ConferenceArticles extends ScientificArticles {
     /**
      * 
      * @param {String} title
+     * @param {Array} author
      * @param {Number} numPags 
      * @param {Number} anyoPublicacion
      * @param {Number} numMenciones
      * @param {String} conferenceBook 
      * @param {String} conferenceName
      * @param {String} conferencePlace
-     * @param {...String} author
      */
-    constructor(title, numPags, anyoPublicacion, numMenciones, conferenceBook,
-        conferenceName, conferencePlace, ...author) {
-        super(title, numPags, anyoPublicacion, numMenciones, author);
+    constructor(title, author, numPags, anyoPublicacion, numMenciones, conferenceBook,
+        conferenceName, conferencePlace) {
+        super(title, author, numPags, anyoPublicacion, numMenciones);
         this.conferenceBook = conferenceBook;
         this.conferenceName = conferenceName;
         this.conferencePlace = conferencePlace;
