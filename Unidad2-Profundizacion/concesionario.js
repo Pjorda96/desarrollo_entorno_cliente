@@ -50,7 +50,7 @@ while (!salir) {
         for (let i = 0; i < listaCoches.length; i++) {
             let coche = listaCoches[i];
             if (coche.matricula === matricula) {
-                listaCoches.splice(i);
+                listaCoches.splice(i,1);
                 encontrado = true;
                 break;
             }

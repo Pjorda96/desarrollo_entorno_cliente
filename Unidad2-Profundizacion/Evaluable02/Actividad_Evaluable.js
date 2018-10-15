@@ -18,7 +18,7 @@ while (!salir) {
     console.log('-1) Salir del sistema');
     let opcion = readline.questionInt('Por favor, seleccione una de estas opciones: ');
     if (opcion === 1) {
-        //Dar de alta una publicacion //TODO
+        //Dar de alta una publicacion //TODO: author
         console.log('Selecciona un tipo.');
         console.log('1) Aticulo de revista');
         console.log('2) Articulo de conferencia');
@@ -71,7 +71,7 @@ while (!salir) {
         for (let i = 0; i < publications.length; i++) {
             let publication = publications[i];
             if (publication.title === titulo) {
-                publications.splice(i);
+                publications.splice(i,1);
                 encontrado = true;
                 break;
             }
@@ -83,7 +83,7 @@ while (!salir) {
             console.log('Publicacion no encontrada en el sistema');
         }
     } else if (opcion === 3) {
-        //Modificar autores  //TODO
+        //Modificar autores  //TODO: author
         let titulo = readline.question('Por favor, introduce un titulo: ');
         let encontrado = false;
         for (let i = 0; i < publications.length; i++) {
@@ -214,20 +214,20 @@ while (!salir) {
             console.log('Publicacion no encontrada en el sistema');
         }
     } else if (opcion === 6) {
-        //Búsqueda por diferentes criterios //TODO
+        //Búsqueda por diferentes criterios //TODO: author
         let autor = readline.question('Introduce el autor o pulsa enter: ');
         let anyoPublicacion = readline.questionInt('Introduce el año de publicacion o 0: ');
         let tipo = readline.question('Introduce el tipo de publicacion (Revista|Conferencia|Patente) o pulsa enter: ');
         let busqueda = [];
         let encont = false;
 
-        for (let i = 0; i < publications.length; i++) {
-            if (autor !== '' && publicacions[i].getAuthor == autor) encont = true;
-            if (anyoPublicacion !== 0 && publications[i].getAnyoPublicacion) encont = true;
-            if (tipo !== 0 && publications[i].isReview 
-                || publications[i].isConference 
-                || publications[i].isPatent) encont = true;
-            if (encont === true) busqueda.push(publications[i]);
+        for (let publicacion of publications) {
+            if (autor !== '' && publicacion.getAuthor == autor) encont = true;
+            if (anyoPublicacion !== 0 && publication.getAnyoPublicacion) encont = true;
+            if (tipo !== 0 && publication.isReview
+                || publication.isConference 
+                || publication.isPatent) encont = true;
+            if (encont === true) busqueda.push(publication);
         }
         console.log(busqueda);
     }
