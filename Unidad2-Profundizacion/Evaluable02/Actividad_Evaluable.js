@@ -13,6 +13,9 @@ const ReviewArticle = require('./ReviewArticles').ReviewArticles;
 const ConferenceArticle = require('./ConferenceArticles').ConferenceArticles;
 const ScientificPatent = require('./ScientificPatents').ScientificPatents;
 
+/**
+ * @returns {Object} autores
+ */
 function insertarAutores() {
     let autores = [];
     let autor = readline.question('Introduce el autor: ');
@@ -26,6 +29,10 @@ function insertarAutores() {
     return autores;
 }
 
+/**
+ * 
+ * @param {boolean} encontrado 
+ */
 function encontrado(encontrado) {
     if (encontrado) {
         console.log('Publicacion encontrada y borrada del sistema');
