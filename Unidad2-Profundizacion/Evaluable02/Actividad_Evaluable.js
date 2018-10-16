@@ -1,4 +1,5 @@
 'use strict';
+const fs = require('fs');
 const readline = require('readline-sync');
 //var db = require('./db').db;
 const ReviewArticle = require('./ReviewArticles').ReviewArticles;
@@ -8,8 +9,17 @@ const ScientificPatent = require('./ScientificPatents').ScientificPatents;
 //Permita dar de alta, baja, y modificación de autores,
 //artículos científicos (revista y conferencia), y patentes científicas
 
-let publications = [];
+fs.readFile('./db.json', function read(err, data) {
+    if (err) {
+        console.log('Error');
+    }
+    db = data;
+    console.log(db);
+});
+let publications = JSON.parse(db);
+//let publications = [];
 let salir = false;
+
 while (!salir) {
     console.log('Bienvenidos al sistema de gestion de la librería cientifica.');
     console.log('1) Dar de alta una publicacion');
@@ -256,3 +266,12 @@ while (!salir) {
     }
 
 }
+
+db = JSON.stringify(publications);
+
+fs.writeFile('db.json', db, function write (err) {
+  if (err) {
+    console.log('Error');
+  }
+  console.log('The file has been saved!');
+});
