@@ -9,7 +9,6 @@
 
 const fs = require('fs');
 const readline = require('readline-sync');
-//var db = require('./db').db;
 const ReviewArticle = require('./ReviewArticles').ReviewArticles;
 const ConferenceArticle = require('./ConferenceArticles').ConferenceArticles;
 const ScientificPatent = require('./ScientificPatents').ScientificPatents;
@@ -19,14 +18,17 @@ const ScientificPatent = require('./ScientificPatents').ScientificPatents;
  */
 function insertarAutores() {
     let autores = [];
+    let finAutores = true;
     let autor = readline.question('Introduce el autor: ');
     autores.push(autor);
     do {
         let autor = readline.question('Introduce otro autor o pulsa enter: ');
         if (autor !== '') {
             autores.push(autor);
+        } else {
+            finAutores = false;
         }
-    } while (autor == '');
+    } while (finAutores);
     return autores;
 }
 
@@ -34,7 +36,7 @@ function insertarAutores() {
  *
  * @param {boolean} encontrado
  */
-function encontrado(encontrado) {
+function encont(encontrado) {
     if (encontrado) {
         console.log('Publicacion encontrada y borrada del sistema');
         //console.log(publications);
@@ -43,19 +45,12 @@ function encontrado(encontrado) {
     }
 }
 
-fs.readFile('./db.json', function read(err, data) {
-    if (err) {
-        console.log('Error');
-    }
-    db = data;
-    console.log(db);
-});
+let db = fs.readFileSync('./db.json', 'utf8');
 let publications = JSON.parse(db);
-//let publications = [];
 let salir = false;
 
 while (!salir) {
-    console.log('Bienvenidos al sistema de gestion de la librería cientifica.');
+    console.log('\n'+'Bienvenidos al sistema de gestion de la librería cientifica.');
     console.log('1) Dar de alta una publicacion');
     console.log('2) Dar de baja una publicacion');
     console.log('3) Modificar autores');
@@ -64,6 +59,8 @@ while (!salir) {
     console.log('6) Buscar publicaciones cientificas');
     console.log('7) Numero de publicaciones cientificas por autor y año');
     console.log('8) Factor de impacto por autor y año');
+    console.log('9) Calcule el Indice-h de un autor');
+    console.log('10) Mostrar db');
     console.log('-1) Salir del sistema');
     let opcion = readline.questionInt('Por favor, seleccione una de estas opciones: ');
     if (opcion === 1) {
@@ -126,7 +123,7 @@ while (!salir) {
             }
         }
 
-        encontrado(encontrado)
+        encont(encontrado)
     } else if (opcion === 3) {
         //Modificar autores
         let titulo = readline.question('Por favor, introduce un titulo: ');
@@ -142,9 +139,9 @@ while (!salir) {
                 break;
             }
         }
-        encontrado(encontrado)
+        encont(encontrado)
     } else if (opcion === 4) {
-        //Modificar articulos cientificos
+        //Modificar articulos cientificos //TODO: no funciona
         let type = readline.question('Por favor, introduce el tipo:\n' +
         '1) Articulo de revista\n' +
         '2) Articulo de conferencia\n' +
@@ -215,17 +212,17 @@ while (!salir) {
                     break;
                 }
             }
-            console.log(publications[publications.length - 1]);
         }
 
-        encontrado(encontrado)
+        encont(encontrado)
     } else if (opcion === 5) {
-        //Modificar patentes cientificas
+        //Modificar patentes cientificas //TODO: no funciona
         let encontrado = false;
+        let titulo = readline.question('Por favor, introduce un titulo: ');
         for (let i = 0; i < publications.length; i++) {
             let publication = publications[i];
-            if (publication.title === titulo && publication.isConference === true) {
-                console.log('Introduce los datos que quieras modificar y deja en blanco el resto o 0 en los campos numericos');
+            if (publication.title === titulo && publication.isPatent === true) {
+                console.log('\n' + 'Introduce los datos que quieras modificar y deja en blanco el resto o 0 en los campos numericos');
                 let titulo = readline.question('Introduce el titulo o pulsa enter: ');
                 if (titulo !== '') publications[i].setTitle(titulo);
 
@@ -240,9 +237,8 @@ while (!salir) {
                 break;
             }
         }
-        console.log(publications[publications.length - 1]);
 
-        encontrado(encontrado)
+        encont(encontrado)
     } else if (opcion === 6) {
         //Búsqueda por diferentes criterios
         let autor = readline.question('Introduce el autor o pulsa enter: ');
@@ -274,32 +270,41 @@ while (!salir) {
         let encont = false;
 
         for (let publication of publications) {
-            if (autor !== '' && anyo <= publication.getAnyoPublicacion()) {
-                for (author of publication.getAuthor()) {
+            if (autor !== '' && anyo <= publication.anyoPublicacion) {
+                for (let author of publication.author) {
                     if (author === autor) {
                         encont = true;
                     }
                 }
+            } else {
+                console.log('Datos no introducidos correctamente');
             }
-            if (encont === true) busqueda++;
+            if (encont === true){
+                busqueda++;
+                encont = false;
+            }
         }
         console.log('El numero de publicaciones de ' + autor + ' es: ' + busqueda);
     } else if (opcion === 8) {
-        //Factor de impacto por autor y año
+        //Factor de impacto por autor y año  //TODO: no funciona
         let autor = readline.question('Introduce el autor: ');
         let anyo = readline.questionInt('Introduce el año de inicio de busqueda: ');
         let busqueda = 0;
         let encont = false;
 
-        for (let publication of publications) {
-            if (autor !== '' && anyo <= publication.getAnyoPublicacion()) {
-                for (author of publication.getAuthor()) {
+        for (let i = 0; i < publications.length; i++) {
+            let publication = publications[i];
+            if (autor !== '' && anyo <= publication.anyoPublicacion && publication.review) {
+                for (let author of publication.author) {
                     if (author === autor) {
                         encont = true;
                     }
                 }
             }
-            if (encont === true) busqueda = busqueda + publication.getImpactFactor();
+            if (encont === true) {
+                busqueda = busqueda + publication.impactFactor;
+                encont = false;
+            }
         }
         console.log('El factor de impacto de ' + autor + ' es ' + busqueda);
     }
@@ -336,6 +341,9 @@ while (!salir) {
             if (encont === true) busqueda = busqueda + publication.getImpactFactor();
         }
         console.log('El factor de impacto de ' + autor + ' es ' + busqueda);
+    } else if (opcion === 10) {
+        //Mostrar db
+        console.log(publications);
     }
 
 
@@ -346,9 +354,11 @@ while (!salir) {
 
 
      else if (opcion === -1) {
+         //salir del sistema
         salir = true;
     } else if (opcion === -7777) {
         //borrar la db
+        fs.writeFileSync('./db.json', JSON.stringify([]) );
         console.log('Base de datos borrada');
         salir = true;
     }
@@ -357,9 +367,4 @@ while (!salir) {
 
 db = JSON.stringify(publications);
 
-fs.writeFile('db.json', db, function write (err) {
-  if (err) {
-    console.log('Error');
-  }
-  console.log('The file has been saved!');
-});
+fs.writeFileSync('./db.json', db);
