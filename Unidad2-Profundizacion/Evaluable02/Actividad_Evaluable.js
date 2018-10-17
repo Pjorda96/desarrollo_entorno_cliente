@@ -1,12 +1,13 @@
 'use strict';
 /**
  * Para una mejor lectura y comprension del codigo:
- * 
+ *
  * Todas la variables y metodos referentes a clases seran en inglés
  * Las variables de datos pedidas al usuario y resto de variables
  * utilizadas en el codigo seran en castellano
  */
 
+const fs = require('fs');
 const readline = require('readline-sync');
 //var db = require('./db').db;
 const ReviewArticle = require('./ReviewArticles').ReviewArticles;
@@ -30,8 +31,8 @@ function insertarAutores() {
 }
 
 /**
- * 
- * @param {boolean} encontrado 
+ *
+ * @param {boolean} encontrado
  */
 function encontrado(encontrado) {
     if (encontrado) {
@@ -42,8 +43,17 @@ function encontrado(encontrado) {
     }
 }
 
-let publications = [];
+fs.readFile('./db.json', function read(err, data) {
+    if (err) {
+        console.log('Error');
+    }
+    db = data;
+    console.log(db);
+});
+let publications = JSON.parse(db);
+//let publications = [];
 let salir = false;
+
 while (!salir) {
     console.log('Bienvenidos al sistema de gestion de la librería cientifica.');
     console.log('1) Dar de alta una publicacion');
@@ -115,7 +125,7 @@ while (!salir) {
                 break;
             }
         }
-        
+
         encontrado(encontrado)
     } else if (opcion === 3) {
         //Modificar autores
@@ -251,7 +261,7 @@ while (!salir) {
             }
             if (anyoPublicacion !== 0 && publication.getAnyoPublicacion()) encont = true;
             if (tipo !== 0 && publication.isReview
-                || publication.isConference 
+                || publication.isConference
                 || publication.isPatent) encont = true;
             if (encont === true) busqueda.push(publication);
         }
@@ -344,3 +354,12 @@ while (!salir) {
     }
 
 }
+
+db = JSON.stringify(publications);
+
+fs.writeFile('db.json', db, function write (err) {
+  if (err) {
+    console.log('Error');
+  }
+  console.log('The file has been saved!');
+});
