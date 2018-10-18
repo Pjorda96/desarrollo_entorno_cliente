@@ -38,13 +38,14 @@ function insertarAutores() {
  */
 function encont(encontrado) {
   if (encontrado) {
-    console.log('\n Publicacion encontrada y gestionada en el sistema');
+    console.log('\nPublicacion encontrada y gestionada en el sistema');
   } else {
-    console.log('\n Publicacion no encontrada en el sistema');
+    console.log('\nPublicacion no encontrada en el sistema');
   }
 }
 
 /**
+ * Subir las actualizaciones a la base de datos
  * 
  * @param {Array} publications
  */
@@ -158,15 +159,15 @@ while (!salir) {
     encont(encontrado);
     subir(publications);
   } else if (opcion === 4) {
-    //Modificar articulos cientificos //TODO: no funciona
-    let type = readline.question('Por favor, introduce el tipo:\n' +
-      '1) Articulo de revista\n' +
-      '2) Articulo de conferencia\n' +
-      'Tipo: ');
+    //Modificar articulos cientificos
+    console.log('Por favor, introduce el tipo:');
+    console.log('1) Articulo de revista');
+    console.log('2) Articulo de conferencia');
+    let type = readline.questionInt('Tipo: ');
     let encontrado = false;
-    let titulo = readline.question('Por favor, introduce un titulo: ');
 
     if (type === 1) {
+      let titulo = readline.question('Por favor, introduce un titulo: ');
       for (let i = 0; i < publications.length; i++) {
         let publication = publications[i];
         if (publication.title === titulo && publication._review) {
@@ -197,8 +198,8 @@ while (!salir) {
           break;
         }
       }
-      console.log(publications[publications.length - 1]);
     } else if (type === 2) {
+      let titulo = readline.question('Por favor, introduce un titulo: ');
       for (let i = 0; i < publications.length; i++) {
         let publication = publications[i];
         if (publication.title === titulo && publication._conference) {
@@ -240,7 +241,7 @@ while (!salir) {
     for (let i = 0; i < publications.length; i++) {
       let publication = publications[i];
       if (publication.title === titulo && publication._patent) {
-        console.log('\n' + 'Introduce los datos que quieras modificar y deja en blanco el resto o 0 en los campos numericos');
+        console.log('\nIntroduce los datos que quieras modificar y deja en blanco el resto o 0 en los campos numericos');
         let titulo = readline.question('Introduce el titulo o pulsa enter (Antiguo: ' + publication.title + '): ');
         if (titulo !== '') publications[i].title = titulo;
 
@@ -352,48 +353,27 @@ while (!salir) {
       }
     }
     console.log('El factor de impacto de ' + autor + ' es ' + busqueda);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   } else if (opcion === 9) {
-    //Calcule el Indice-h de un autor //TODO: hacer
-    let autor = readline.question('Introduce el id del autor que quieras buscar');
-    let citaciones = [];
-    //bloque de codigo que añade el numero de menciones según el autor indicado al array 'citaciones'
-    for (let publicacion of publicaciones) {
-      if (publicacion.isArticulo_revista() === true || publicacion.isArticulo_conferencia() === true) {
-        //Si es un articulo llega a este punto ya que solo hay citaciones en estos artículos
-        if (publicacion.getAutor() === autor) {
-          citaciones.push(publicacion.getMenciones());
-        }
+    //Calcule el Indice-h de un autor
+    //1.Ordena de mayor a menor los arrays
+    //2.Calcular el indice-h
+
+    let autor = readline.question('Introduce autor: ');
+    let busqueda = [];
+    for (let publication of publications) {
+      if (publication._review && publication.author === autor) {
+        busqueda.push(publication.impactFactor);
       }
     }
-    //Ordena de mayor a menor los arrays
-    citaciones.sort(ordenarAsc);
-    //Bloque que codigo que calcula el indice-h
-    for (let i = 0; i < citaciones.length; i++) {
-      if (i > citaciones[i]) {
-        console.log('El indice-h del autor ' + autor + ' es: ' + (i - 1));
+    busqueda.sort((a, b) => {
+      return b - a;
+    });
+    for (let i = 0; i < busqueda.length; i++) {
+      if (i > busqueda[i]) {
+        console.log('\nEl indice-h del autor ' + autor + ' es: ' + (i - 1));
       }
     }
-    console.log('El factor de impacto de ' + autor + ' es ' + busqueda);
-
-
-
-
-
-
+    console.log('\nEl indice-h de ' + autor + ' es ' + busqueda);
   } else if (opcion === 10) {
     //Mostrar db
     console.log(publications);
@@ -402,7 +382,7 @@ while (!salir) {
     salir = true;
   } else if (opcion === -7777) {
     //borrar la db
-    fs.writeFileSync('./db.json', JSON.stringify([]));
+    fs.writeFileSync('./js/db.json', JSON.stringify([]));
     console.log('Base de datos borrada');
     salir = true;
   } else {
