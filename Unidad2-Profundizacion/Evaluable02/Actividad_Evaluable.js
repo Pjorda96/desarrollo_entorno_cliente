@@ -9,9 +9,9 @@
 
 const fs = require('fs');
 const readline = require('readline-sync');
-const ReviewArticle = require('./ReviewArticles').ReviewArticles;
-const ConferenceArticle = require('./ConferenceArticles').ConferenceArticles;
-const ScientificPatent = require('./ScientificPatents').ScientificPatents;
+const ReviewArticle = require('./js/ReviewArticles').ReviewArticles;
+const ConferenceArticle = require('./js/ConferenceArticles').ConferenceArticles;
+const ScientificPatent = require('./js/ScientificPatents').ScientificPatents;
 
 /**
  * @returns {Object} autores
@@ -45,7 +45,7 @@ function encont(encontrado) {
     }
 }
 
-let db = fs.readFileSync('./db.json', 'utf8');
+let db = fs.readFileSync('./js/db.json', 'utf8');
 let publications = JSON.parse(db);
 let salir = false;
 
@@ -367,4 +367,4 @@ while (!salir) {
 
 db = JSON.stringify(publications);
 
-fs.writeFileSync('./db.json', db);
+fs.writeFileSync('./js/db.json', db);
