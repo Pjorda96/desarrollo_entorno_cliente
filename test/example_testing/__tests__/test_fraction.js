@@ -98,9 +98,7 @@ test('Testing add: el parametro es otra fracción', () => {
 
 test('Testing add: el parametro no es una fracción ni un entero', () => {
     let fr1 = new Fraction(2, 4);
-    let fr2 = fr1.add('a');
-    //hacer correctamente el TypeError
-    expect(fr2).toThrow(TypeError('Add method requires another fraction'));
+    expect(() => fr1.divide('a')).toThrowError(Error);
 });
 
 /*
@@ -124,9 +122,7 @@ test('Testing multiply: el parametro es otra fracción', () => {
 
 test('Testing multiply: el parametro no es una fracción ni un entero', () => {
     let fr1 = new Fraction(2, 4);
-    let fr2 = fr1.multiply('a');
-    //hacer correctamente el TypeError
-    expect(fr2).toThrow(TypeError('Add method requires another fraction'));
+    expect(() => fr1.divide('a')).toThrowError(Error);
 });
 
 /*
@@ -150,33 +146,22 @@ test('Testing divide: el parametro es otra fracción', () => {
 
 test('Testing divide: el parametro no es una fracción ni un entero', () => {
     let fr1 = new Fraction(2, 4);
-    let fr2 = fr1.divide('a');
-    //hacer correctamente el TypeError
-    expect(fr2).toThrowError(TypeError('Add method requires another fraction'));
+    expect(() => fr1.divide('a')).toThrowError(Error);
 });
 
 /*
 # Testing resta de fracciones
 */
 
-test('Testing resta: el parametro es un entero', () => {
-    let fr1 = new Fraction(7, 4);
-    let fr2 = fr1.minus(1);
-    expect(fr2.getNumerator()).toBe(3);
-    expect(fr2.getDenominator()).toBe(4);
-});
-
 test('Testing resta: el parametro es otra fracción', () => {
     let fr1 = new Fraction(2, 4);
     let fr2 = new Fraction(1, 3);
     let fr3 = fr1.minus(fr2);
-    expect(fr3.getNumerator()).toBe(3);
-    expect(fr3.getDenominator()).toBe(2);
+    expect(fr3.getNumerator()).toBe(1);
+    expect(fr3.getDenominator()).toBe(6);
 });
 
 test('Testing resta: el parametro no es una fracción ni un entero', () => {
     let fr1 = new Fraction(2, 4);
-    let fr2 = fr1.minus('a');
-    //hacer correctamente el TypeError
-    expect(fr2).toThrow(TypeError('Add method requires another fraction'));
+    expect(() => fr1.divide('a')).toThrowError(Error);
 });
