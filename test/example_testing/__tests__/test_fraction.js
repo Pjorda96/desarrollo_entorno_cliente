@@ -66,11 +66,11 @@ test('Testing mcm: está entre el máximo de los parámetros y la multiplicació
 });
 
 test('Testing mcm: el primer parámetro no es un entero', () => {
-            expect(() => Fraction.mcm(1.5, 5)).toThrowError(Error);
+    expect(() => Fraction.mcm(1.5, 5)).toThrowError(Error);
 });
 
 test('Testing mcm: el segunod parámetro no es un entero', () => {
-            expect(() => Fraction.mcm(5, 1.5)).toThrowError(Error);
+    expect(() => Fraction.mcm(5, 1.5)).toThrowError(Error);
 });
 
 test('Testing mcm: el segunod parámetro no es un entero', () => {
