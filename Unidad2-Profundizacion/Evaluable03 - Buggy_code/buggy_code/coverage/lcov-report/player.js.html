@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75% </span>
+        <span class="strong">80.85% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>27/36</span>
+        <span class='fraction'>38/47</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">12.5% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/4</span>
+        <span class='fraction'>1/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">76.47% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>7/14</span>
+        <span class='fraction'>13/17</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75% </span>
+        <span class="strong">82.22% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>27/36</span>
+        <span class='fraction'>37/45</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -188,7 +188,18 @@
 143
 144
 145
-146</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -221,6 +232,17 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -245,7 +267,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -253,15 +275,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -285,7 +299,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -366,7 +388,18 @@ class Player{
         player.age = jsonObject[constants.age];
         player.club = jsonObject[constants.club];
         player.overall = jsonObject[constants.overall_quality];
-        player.value = jsonObject[constants.market_value];
+        let valueM = (a) =&gt; parseFloat(a.substring(1, a.length - 1)) * 1000000;
+        let valueK = <span class="fstat-no" title="function not covered" >(a</span>) =&gt; <span class="cstat-no" title="statement not covered" >parseFloat(a.substring(1, a.length - 1)) * 1000;</span>
+        let value = (a) =&gt; {
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (a.substring(a.length - 1, a.length) === 'M') {
+                let i = valueM(a);
+                return i;
+            } else <span class="cstat-no" title="statement not covered" >if (a.substring(a.length - 1, a.length) === 'K') {</span>
+                let i = <span class="cstat-no" title="statement not covered" >valueK(a);</span>
+<span class="cstat-no" title="statement not covered" >                return i;</span>
+            }
+        };
+        player.value = value(jsonObject[constants.market_value]);
         let preferredPositions = new Set(jsonObject[constants.preferred_positions].split(' '));
         player._isGoalKeeper = isGoalkeeper(preferredPositions);
         player._isBack = isBack(preferredPositions);
@@ -389,24 +422,24 @@ class Player{
      * Returns if the player can play as a forward
      * @returns {Boolean} true in case that the player may play as a forward/striker, false otherwise
      */
-<span class="fstat-no" title="function not covered" >    is</span>Forward(){
-<span class="cstat-no" title="statement not covered" >        return this._isBack;</span>
+    isForward(){
+        return this._isForward;
     }
 &nbsp;
     /**
      * Returns if the player can play as a defender
      * @returns {Boolean} true in case that the player may play as a defender, false otherwise
      */
-<span class="fstat-no" title="function not covered" >    is</span>Back(){
-<span class="cstat-no" title="statement not covered" >        return this._isBack;</span>
+    isBack(){
+        return this._isBack;
     }
 &nbsp;
     /**
      * Returns if the player can play as a midfielder
      * @returns {Boolean} true in case that the player may play as a midfielder, false otherwise
      */
-<span class="fstat-no" title="function not covered" >    is</span>Midfielder(){
-<span class="cstat-no" title="statement not covered" >        return this._isMidfielder;</span>
+    isMidfielder(){
+        return this._isMidfielder;
     }
 &nbsp;
     /**
@@ -429,8 +462,8 @@ class Player{
      * Gets the previous club of the player
      * @returns {String} with the previous club of the player
      */
-<span class="fstat-no" title="function not covered" >    ge</span>tTeam(){
-<span class="cstat-no" title="statement not covered" >        return this.club;</span>
+    getTeam(){
+        return this.club;
     }
 &nbsp;
     /**
@@ -484,7 +517,7 @@ exports.Player = Player;</pre></td></tr>
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Oct 29 2018 11:48:48 GMT+0300 (Hora estándar de Rusia TZ 2)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Oct 29 2018 17:29:36 GMT+0300 (Hora estándar de Rusia TZ 2)
 </div>
 </div>
 <script src="prettify.js"></script>

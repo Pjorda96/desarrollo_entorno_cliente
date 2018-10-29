@@ -353,75 +353,75 @@
  * Object that containst the constants to access the fields of the JSONs parsed from the database
  */
 var constants = {
-    name : 'Name',
-    age : 'Age',
-    country: 'Nationality',
-    club: 'Club',
-    overall_quality : 'Overall',
-    market_value : 'Value',
-    player_id : 'ID',
-    acceleration: 'Acceleration',
-    aggression: 'Aggression',
-    agility: 'Agility',
-    balance: 'Balance',
-    ball_control: 'Ball control',
-    composure: 'Composure',
-    crossing: 'Crossing',
-    curve: 'Curve',
-    dribbling: 'Dribbling',
-    finishing: 'Finishing',
-    free_kick_accuracy: 'Free kick accuracy',
-    goalkeeper_diving: 'GK diving',
-    goalkeeper_handling: 'GK handling',
-    goalkeeper_kicking: 'GK kicking',
-    goalkeeper_positioning: 'GK positioning',
-    goalkeeper_reflexes: 'GK reflexes',
-    heading_accuracy: 'Heading accuracy',
-    interceptions: 'Interceptions',
-    jumping: 'Jumping',
-    long_passing: 'Long passing',
-    long_shots: 'Long shots',
-    marking: 'Marking',
-    penalties: 'Penalties',
-    positioning: 'Positioning',
-    reactions: 'Reactions',
-    short_passing: 'Short passing',
-    shot_power: 'Shot power',
-    sliding_tackle: 'Sliding tackle',
-    sprint_speed: 'Spring speed',
-    stamina: 'Stamina',
-    standing_tackle: 'Standing tackle',
-    strength: 'Strength',
-    vision: 'Vision',
-    volleys: 'Volleys',
-    preferred_positions: 'Preferred Positions',
-    center_attacking_midfielder: 'CAM',
-    center_back: 'CB',
-    center_defensive_midfielder: 'CDM',
-    center_forward: 'CF',
-    center_midfielder: 'CM',
-    left_attacking_midfielder: 'LAM',
-    left_back: 'LB',
-    left_center_back: 'LCB',
-    left_center_midfielder: 'LCM',
-    left_defensive_midfielder: 'LDM',
-    left_forward: 'LF',
-    left_midfielder: 'LM',
-    left_striker: 'LS',
-    left_wing: 'LW',
-    left_wing_back: 'LWB',
-    right_attacking_midfielder: 'RAM',
-    right_back: 'RB',
-    right_center_back: 'RCB',
-    right_center_midfielder: 'RCM',
-    right_defensive_midfielder: 'RDM',
-    right_forward: 'RF',
-    right_midfielder: 'RM',
-    right_striker: 'RS',
-    right_wing: 'RW',
-    right_wing_back: 'RWB',
-    striker: 'ST',
-    goalkeeper: 'GK'
+	name: 'Name',
+	age: 'Age',
+	country: 'Nationality',
+	club: 'Club',
+	overall_quality: 'Overall',
+	market_value: 'Value',
+	player_id: 'ID',
+	acceleration: 'Acceleration',
+	aggression: 'Aggression',
+	agility: 'Agility',
+	balance: 'Balance',
+	ball_control: 'Ball control',
+	composure: 'Composure',
+	crossing: 'Crossing',
+	curve: 'Curve',
+	dribbling: 'Dribbling',
+	finishing: 'Finishing',
+	free_kick_accuracy: 'Free kick accuracy',
+	goalkeeper_diving: 'GK diving',
+	goalkeeper_handling: 'GK handling',
+	goalkeeper_kicking: 'GK kicking',
+	goalkeeper_positioning: 'GK positioning',
+	goalkeeper_reflexes: 'GK reflexes',
+	heading_accuracy: 'Heading accuracy',
+	interceptions: 'Interceptions',
+	jumping: 'Jumping',
+	long_passing: 'Long passing',
+	long_shots: 'Long shots',
+	marking: 'Marking',
+	penalties: 'Penalties',
+	positioning: 'Positioning',
+	reactions: 'Reactions',
+	short_passing: 'Short passing',
+	shot_power: 'Shot power',
+	sliding_tackle: 'Sliding tackle',
+	sprint_speed: 'Spring speed',
+	stamina: 'Stamina',
+	standing_tackle: 'Standing tackle',
+	strength: 'Strength',
+	vision: 'Vision',
+	volleys: 'Volleys',
+	preferred_positions: 'Preferred Positions',
+	center_attacking_midfielder: 'CAM',
+	center_back: 'CB',
+	center_defensive_midfielder: 'CDM',
+	center_forward: 'CF',
+	center_midfielder: 'CM',
+	left_attacking_midfielder: 'LAM',
+	left_back: 'LB',
+	left_center_back: 'LCB',
+	left_center_midfielder: 'LCM',
+	left_defensive_midfielder: 'LDM',
+	left_forward: 'LF',
+	left_midfielder: 'LM',
+	left_striker: 'LS',
+	left_wing: 'LW',
+	left_wing_back: 'LWB',
+	right_attacking_midfielder: 'RAM',
+	right_back: 'RB',
+	right_center_back: 'RCB',
+	right_center_midfielder: 'RCM',
+	right_defensive_midfielder: 'RDM',
+	right_forward: 'RF',
+	right_midfielder: 'RM',
+	right_striker: 'RS',
+	right_wing: 'RW',
+	right_wing_back: 'RWB',
+	striker: 'ST',
+	goalkeeper: 'GK'
 };
 &nbsp;
 /**
@@ -429,17 +429,17 @@ var constants = {
  * @param {Set&lt;String&gt;} preferredPositions A set containing strings representing the player's positions
  * @returns {Boolean} true in case that the set contains a forwarder position
  */
-function isForward(preferredPositions){
-    if(preferredPositions.has(constants.center_forward) || 
-    preferredPositions.has(constants.left_forward) || 
-    preferredPositions.has(constants.right_forward) ||
-    preferredPositions.has(constants.striker) || 
-    preferredPositions.has(constants.right_striker) || 
-    preferredPositions.has(constants.left_striker)){
-        return true;
-    }
-    return false;
-    
+function isForward(preferredPositions) {
+	if (preferredPositions.has(constants.center_forward) ||
+		preferredPositions.has(constants.left_forward) ||
+		preferredPositions.has(constants.right_forward) ||
+		preferredPositions.has(constants.striker) ||
+		preferredPositions.has(constants.right_striker) ||
+		preferredPositions.has(constants.left_striker)) {
+		return true;
+	}
+	return false;
+&nbsp;
 }
 &nbsp;
 /**
@@ -447,17 +447,17 @@ function isForward(preferredPositions){
  * @param {Set&lt;String&gt;} preferredPositions A set containing strings representing the player's positions
  * @returns {Boolean} true in case that the set contains a defender position
  */
-function isBack(preferred_positions){
-    <span class="missing-if-branch" title="if path not taken" >I</span>if(preferred_positions.has(constants.center_back) || 
-    preferred_positions.has(constants.left_back) || 
-    preferred_positions.has(constants.left_center_back) ||
-    preferred_positions.has(constants.left_wing_back) || 
-    preferred_positions.has(constants.right_back) || 
-    preferred_positions.has(constants.right_center_back) ||
-    preferred_positions.has(constants.right_wing_back)){
-<span class="cstat-no" title="statement not covered" >        return true;</span>
-    }
-    return false;
+function isBack(preferred_positions) {
+	<span class="missing-if-branch" title="if path not taken" >I</span>if (preferred_positions.has(constants.center_back) ||
+		preferred_positions.has(constants.left_back) ||
+		preferred_positions.has(constants.left_center_back) ||
+		preferred_positions.has(constants.left_wing_back) ||
+		preferred_positions.has(constants.right_back) ||
+		preferred_positions.has(constants.right_center_back) ||
+		preferred_positions.has(constants.right_wing_back)) {
+<span class="cstat-no" title="statement not covered" >		return true;</span>
+	}
+	return false;
 }
 &nbsp;
 /**
@@ -465,23 +465,23 @@ function isBack(preferred_positions){
  * @param {Set&lt;String&gt;} preferredPositions A set containing strings representing the player's positions
  * @returns {Boolean} true in case that the set contains a midfielder position
  */
-function isMidfielder(preferred_positions){
-    <span class="missing-if-branch" title="else path not taken" >E</span>if(preferred_positions.has(constants.center_attacking_midfielder) || 
-    preferred_positions.has(constants.center_defensive_midfielder) || 
-    preferred_positions.has(constants.center_midfielder) || 
-    preferred_positions.has(constants.left_attacking_midfielder) || 
-    preferred_positions.has(constants.left_center_midfielder) || 
-    preferred_positions.has(constants.left_defensive_midfielder) || 
-    preferred_positions.has(constants.left_midfielder) || 
-    preferred_positions.has(constants.right_attacking_midfielder) || 
-    preferred_positions.has(constants.right_center_midfielder) || 
-    preferred_positions.has(constants.right_defensive_midfielder) || 
-    preferred_positions.has(constants.right_midfielder) || 
-    preferred_positions.has(constants.right_wing) || 
-    preferred_positions.has(constants.left_wing)){
-        return true;
-    }
-<span class="cstat-no" title="statement not covered" >    return false;</span>
+function isMidfielder(preferred_positions) {
+	<span class="missing-if-branch" title="else path not taken" >E</span>if (preferred_positions.has(constants.center_attacking_midfielder) ||
+		preferred_positions.has(constants.center_defensive_midfielder) ||
+		preferred_positions.has(constants.center_midfielder) ||
+		preferred_positions.has(constants.left_attacking_midfielder) ||
+		preferred_positions.has(constants.left_center_midfielder) ||
+		preferred_positions.has(constants.left_defensive_midfielder) ||
+		preferred_positions.has(constants.left_midfielder) ||
+		preferred_positions.has(constants.right_attacking_midfielder) ||
+		preferred_positions.has(constants.right_center_midfielder) ||
+		preferred_positions.has(constants.right_defensive_midfielder) ||
+		preferred_positions.has(constants.right_midfielder) ||
+		preferred_positions.has(constants.right_wing) ||
+		preferred_positions.has(constants.left_wing)) {
+		return true;
+	}
+<span class="cstat-no" title="statement not covered" >	return false;</span>
 }
 &nbsp;
 /**
@@ -489,13 +489,13 @@ function isMidfielder(preferred_positions){
  * @param {Set&lt;String&gt;} preferredPositions A set containing strings representing the player's positions
  * @returns {Boolean} true if the player cannot play as any of the other positions, false otherwise
  */
-function isGoalKeeper(preferred_positions){
-    <span class="missing-if-branch" title="if path not taken" >I</span>if(preferred_positions.has(constants.goalkeeper)){
-<span class="cstat-no" title="statement not covered" >        return true;</span>
-    } else <span class="missing-if-branch" title="if path not taken" >I</span>if(!isMidfielder(preferred_positions) &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >!isBack(preferred_positions) </span>&amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >!isForward(preferred_positions))</span>{
-<span class="cstat-no" title="statement not covered" >        return true;</span>
-    }
-    return false;
+function isGoalKeeper(preferred_positions) {
+	<span class="missing-if-branch" title="if path not taken" >I</span>if (preferred_positions.has(constants.goalkeeper)) {
+<span class="cstat-no" title="statement not covered" >		return true;</span>
+	} else <span class="missing-if-branch" title="if path not taken" >I</span>if (!isMidfielder(preferred_positions) &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >!isBack(preferred_positions) </span>&amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >!isForward(preferred_positions))</span> {
+<span class="cstat-no" title="statement not covered" >		return true;</span>
+	}
+	return false;
 }
 &nbsp;
 exports.datasetConstants = constants;
@@ -508,7 +508,7 @@ exports.isMidfielder = isMidfielder;</pre></td></tr>
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Oct 29 2018 11:48:48 GMT+0300 (Hora estándar de Rusia TZ 2)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Oct 29 2018 17:29:36 GMT+0300 (Hora estándar de Rusia TZ 2)
 </div>
 </div>
 <script src="prettify.js"></script>

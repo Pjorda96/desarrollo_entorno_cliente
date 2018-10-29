@@ -31,7 +31,18 @@ class Player{
         player.age = jsonObject[constants.age];
         player.club = jsonObject[constants.club];
         player.overall = jsonObject[constants.overall_quality];
-        player.value = jsonObject[constants.market_value];
+        let valueM = (a) => parseFloat(a.substring(1, a.length - 1)) * 1000000;
+        let valueK = (a) => parseFloat(a.substring(1, a.length - 1)) * 1000;
+        let value = (a) => {
+            if (a.substring(a.length - 1, a.length) === 'M') {
+                let i = valueM(a);
+                return i;
+            } else if (a.substring(a.length - 1, a.length) === 'K') {
+                let i = valueK(a);
+                return i;
+            }
+        };
+        player.value = value(jsonObject[constants.market_value]);
         let preferredPositions = new Set(jsonObject[constants.preferred_positions].split(' '));
         player._isGoalKeeper = isGoalkeeper(preferredPositions);
         player._isBack = isBack(preferredPositions);
@@ -55,7 +66,7 @@ class Player{
      * @returns {Boolean} true in case that the player may play as a forward/striker, false otherwise
      */
     isForward(){
-        return this._isBack;
+        return this._isForward;
     }
 
     /**
