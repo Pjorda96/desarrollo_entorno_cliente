@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1539151928041" clover="3.2.0">
-  <project timestamp="1539151928041" name="All files">
+<coverage generated="1540802928997" clover="3.2.0">
+  <project timestamp="1540802928998" name="All files">
     <metrics statements="75" coveredstatements="62" conditionals="45" coveredconditionals="35" methods="20" coveredmethods="13" elements="140" coveredelements="110" complexity="0" loc="75" ncloc="75" packages="1" files="3" classes="3">
-      <file name="dataset_utils.js" path="/Users/victor/projects/florida/damdaw/dwec/buggy_code/app/data/dataset_utils.js">
+      <file name="dataset_utils.js" path="C:\xampp\htdocs\daw2\desarrolloEntornoCliente\Unidad2-Profundizacion\Evaluable03 - Buggy_code\buggy_code\app\data\dataset_utils.js">
         <metrics statements="20" coveredstatements="16" conditionals="39" coveredconditionals="33" methods="4" coveredmethods="4"/>
         <line num="4" count="1" type="stmt"/>
         <line num="82" count="3" type="cond" truecount="8" falsecount="0"/>
@@ -25,7 +25,7 @@
         <line num="153" count="1" type="stmt"/>
         <line num="154" count="1" type="stmt"/>
       </file>
-      <file name="json_reader.js" path="/Users/victor/projects/florida/damdaw/dwec/buggy_code/app/data/json_reader.js">
+      <file name="json_reader.js" path="C:\xampp\htdocs\daw2\desarrolloEntornoCliente\Unidad2-Profundizacion\Evaluable03 - Buggy_code\buggy_code\app\data\json_reader.js">
         <metrics statements="19" coveredstatements="19" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -47,7 +47,7 @@
         <line num="40" count="1" type="stmt"/>
         <line num="41" count="1" type="stmt"/>
       </file>
-      <file name="player.js" path="/Users/victor/projects/florida/damdaw/dwec/buggy_code/app/data/player.js">
+      <file name="player.js" path="C:\xampp\htdocs\daw2\desarrolloEntornoCliente\Unidad2-Profundizacion\Evaluable03 - Buggy_code\buggy_code\app\data\player.js">
         <metrics statements="36" coveredstatements="27" conditionals="4" coveredconditionals="0" methods="14" coveredmethods="7"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>

@@ -1,5 +1,5 @@
 TN:
-SF:/Users/victor/projects/florida/damdaw/dwec/buggy_code/app/data/dataset_utils.js
+SF:C:\xampp\htdocs\daw2\desarrolloEntornoCliente\Unidad2-Profundizacion\Evaluable03 - Buggy_code\buggy_code\app\data\dataset_utils.js
 FN:81,isForward
 FN:99,isBack
 FN:117,isMidfielder
@@ -75,7 +75,7 @@ BRF:39
 BRH:33
 end_of_record
 TN:
-SF:/Users/victor/projects/florida/damdaw/dwec/buggy_code/app/data/json_reader.js
+SF:C:\xampp\htdocs\daw2\desarrolloEntornoCliente\Unidad2-Profundizacion\Evaluable03 - Buggy_code\buggy_code\app\data\json_reader.js
 FN:11,extractDataFromRawJSON
 FN:27,readJSONData
 FNF:2
@@ -109,7 +109,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:/Users/victor/projects/florida/damdaw/dwec/buggy_code/app/data/player.js
+SF:C:\xampp\htdocs\daw2\desarrolloEntornoCliente\Unidad2-Profundizacion\Evaluable03 - Buggy_code\buggy_code\app\data\player.js
 FN:16,(anonymous_0)
 FN:26,(anonymous_1)
 FN:49,(anonymous_2)
