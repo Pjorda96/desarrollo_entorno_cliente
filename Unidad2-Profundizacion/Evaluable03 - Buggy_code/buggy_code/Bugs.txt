@@ -16,4 +16,5 @@ por: let valueM = (a) => parseFloat(a.substring(1, a.length - 1)) * 1000000;
 así se cambia la variable string a una variable numérica y se diferencia dependiendo si es millón o mil.
 
 Bug 2:
-return this._isForward; en player
+Cambiar: return this._isBack; en player
+por: return this._isForward; en player
