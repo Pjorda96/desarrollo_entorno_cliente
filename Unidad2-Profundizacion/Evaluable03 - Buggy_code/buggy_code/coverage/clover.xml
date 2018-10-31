@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1540823376778" clover="3.2.0">
-  <project timestamp="1540823376778" name="All files">
+<coverage generated="1540972589709" clover="3.2.0">
+  <project timestamp="1540972589709" name="All files">
     <metrics statements="84" coveredstatements="72" conditionals="49" coveredconditionals="36" methods="23" coveredmethods="19" elements="156" coveredelements="127" complexity="0" loc="84" ncloc="84" packages="1" files="3" classes="3">
       <file name="dataset_utils.js" path="C:\xampp\htdocs\daw2\desarrolloEntornoCliente\Unidad2-Profundizacion\Evaluable03 - Buggy_code\buggy_code\app\data\dataset_utils.js">
         <metrics statements="20" coveredstatements="16" conditionals="39" coveredconditionals="33" methods="4" coveredmethods="4"/>
