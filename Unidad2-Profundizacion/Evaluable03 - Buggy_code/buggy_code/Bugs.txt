@@ -18,3 +18,10 @@ así se cambia la variable string a una variable numérica y se diferencia depen
 Bug 2:
 Cambiar: return this._isBack; en player
 por: return this._isForward; en player
+
+Bug 3:
+Eliminar: else if (!isMidfielder(preferred_positions) 
+			&& !isBack(preferred_positions) 
+			&& !isForward(preferred_positions)) {
+		return true;
+	}

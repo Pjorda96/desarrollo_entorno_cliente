@@ -1,31 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1540977041576" clover="3.2.0">
-  <project timestamp="1540977041577" name="All files">
-    <metrics statements="84" coveredstatements="76" conditionals="49" coveredconditionals="42" methods="23" coveredmethods="19" elements="156" coveredelements="137" complexity="0" loc="84" ncloc="84" packages="1" files="3" classes="3">
-      <file name="dataset_utils.js" path="C:\xampp\htdocs\daw2\desarrolloEntornoCliente\Unidad2-Profundizacion\Evaluable03 - Buggy_code\buggy_code\app\data\dataset_utils.js">
-        <metrics statements="20" coveredstatements="20" conditionals="39" coveredconditionals="39" methods="4" coveredmethods="4"/>
+<coverage generated="1541009909287" clover="3.2.0">
+  <project timestamp="1541009909287" name="All files">
+    <metrics statements="82" coveredstatements="74" conditionals="44" coveredconditionals="37" methods="23" coveredmethods="19" elements="149" coveredelements="130" complexity="0" loc="82" ncloc="82" packages="1" files="3" classes="3">
+      <file name="dataset_utils.js" path="D:\xampp\htdocs\daw2\cliente\Unidad2-Profundizacion\Evaluable03 - Buggy_code\buggy_code\app\data\dataset_utils.js">
+        <metrics statements="18" coveredstatements="18" conditionals="34" coveredconditionals="34" methods="4" coveredmethods="4"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="82" count="12" type="cond" truecount="8" falsecount="0"/>
+        <line num="82" count="11" type="cond" truecount="8" falsecount="0"/>
         <line num="88" count="8" type="stmt"/>
-        <line num="90" count="4" type="stmt"/>
-        <line num="100" count="13" type="cond" truecount="9" falsecount="0"/>
+        <line num="90" count="3" type="stmt"/>
+        <line num="100" count="12" type="cond" truecount="9" falsecount="0"/>
         <line num="107" count="8" type="stmt"/>
-        <line num="109" count="5" type="stmt"/>
-        <line num="118" count="22" type="cond" truecount="15" falsecount="0"/>
-        <line num="131" count="20" type="stmt"/>
-        <line num="133" count="2" type="stmt"/>
+        <line num="109" count="4" type="stmt"/>
+        <line num="118" count="18" type="cond" truecount="15" falsecount="0"/>
+        <line num="131" count="17" type="stmt"/>
+        <line num="133" count="1" type="stmt"/>
         <line num="142" count="5" type="cond" truecount="2" falsecount="0"/>
         <line num="143" count="1" type="stmt"/>
-        <line num="144" count="4" type="cond" truecount="5" falsecount="0"/>
-        <line num="145" count="1" type="stmt"/>
-        <line num="147" count="3" type="stmt"/>
-        <line num="150" count="1" type="stmt"/>
-        <line num="151" count="1" type="stmt"/>
+        <line num="149" count="4" type="stmt"/>
         <line num="152" count="1" type="stmt"/>
         <line num="153" count="1" type="stmt"/>
         <line num="154" count="1" type="stmt"/>
+        <line num="155" count="1" type="stmt"/>
+        <line num="156" count="1" type="stmt"/>
       </file>
-      <file name="json_reader.js" path="C:\xampp\htdocs\daw2\desarrolloEntornoCliente\Unidad2-Profundizacion\Evaluable03 - Buggy_code\buggy_code\app\data\json_reader.js">
+      <file name="json_reader.js" path="D:\xampp\htdocs\daw2\cliente\Unidad2-Profundizacion\Evaluable03 - Buggy_code\buggy_code\app\data\json_reader.js">
         <metrics statements="19" coveredstatements="19" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -47,7 +45,7 @@
         <line num="40" count="1" type="stmt"/>
         <line num="41" count="1" type="stmt"/>
       </file>
-      <file name="player.js" path="C:\xampp\htdocs\daw2\desarrolloEntornoCliente\Unidad2-Profundizacion\Evaluable03 - Buggy_code\buggy_code\app\data\player.js">
+      <file name="player.js" path="D:\xampp\htdocs\daw2\cliente\Unidad2-Profundizacion\Evaluable03 - Buggy_code\buggy_code\app\data\player.js">
         <metrics statements="45" coveredstatements="37" conditionals="8" coveredconditionals="1" methods="17" coveredmethods="13"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
