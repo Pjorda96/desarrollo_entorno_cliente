@@ -141,12 +141,11 @@ function isMidfielder(preferred_positions) {
 function isGoalKeeper(preferred_positions) {
 	if (preferred_positions.has(constants.goalkeeper)) {
 		return true;
-	}
-	/*else if (!isMidfielder(preferred_positions) 
-			&& !isBack(preferred_positions) 
-			&& !isForward(preferred_positions)) {
+	} /* else if (!isMidfielder(preferred_positions) &&
+		!isBack(preferred_positions) &&
+		!isForward(preferred_positions)) {
 		return true;
-	}*/
+	} */
 	return false;
 }
 
