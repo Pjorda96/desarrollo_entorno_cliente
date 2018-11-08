@@ -5,4 +5,5 @@ node_modules/*
 test/__MACOSX/*
 test/example_testing/node_modules/*
 test/example_testing/coverage/*
-Unidad2-Profundizacion/Evaluable03 - Buggy_code/buggy_code/node_modules
+Unidad2-Profundizacion/Evaluable03 - Buggy_code/buggy_code/node_modules/*
+Unidad2-Profundizacion/Evaluable03 - Buggy_code/buggy_code/coverage/*
