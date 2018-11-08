@@ -19,4 +19,5 @@ eval(text); */
 console.log(document.body.lastChild.previousSibling.previousSibling.innerHTML); */
 
 let text = document.body.children[1].textContent;
+//firstElementChild.nextElementSibling.textContent
 eval(text);
