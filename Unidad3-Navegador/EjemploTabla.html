@@ -40,9 +40,10 @@
 		let filas = document.body.firstElementChild.tBodies[0].rows;
 
 		for (let fila of filas) {
-			if (parseInt(fila.cells[2].textContent) < 0) {
-				fila.cells[2].style = 'background-color: red';
-			}
+			parseFloat(fila.cells[2].textContent) < 0
+			? fila.cells[2].style = 'background-color: red'
+			//? fila.cells[2].style.background-color = 'red'
+			: false;
 		}
 	</script>
 </body>
