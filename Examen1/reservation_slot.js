@@ -42,8 +42,9 @@ class ReservationSlot {
     getEndTime() {
         let hora = parseInt(this.hora_inicio.substring(0, 2));
         let minutos = parseInt(this.hora_inicio.substring(3, this.hora_inicio.length));
+        let hora_final = hora + (this.duracion / 60);
 
-        return String(hora + ':' + minutos);
+        return String(hora_final + ':' + minutos);
     }
 
     /**
