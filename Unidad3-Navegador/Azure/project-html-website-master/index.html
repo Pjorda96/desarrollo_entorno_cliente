@@ -1,9 +1,9 @@
- <!Doctype html>
+<!Doctype html>
 <html>
 
 <head>
-     <title>HTML Application</title>
-	 <link href="css/site.css" rel="stylesheet">
+    <title>HTML Application</title>
+    <link href="css/site.css" rel="stylesheet">
 </head>
 
 <body>
@@ -13,10 +13,10 @@
         </div>
         <div class="content">
             <div class="tweet-container">
-            <a href="http://twitter.com/intent/tweet/?text=I%20just%20created%20a%20new%20HTML%20website%20on%20Azure%20using%20Azure%20DevOps%20Project&hashtags=AzureDevOpsProject%2CVSTS%20%40Azure%20%40VSTS">
-                <img src="img/tweetThis.svg" />
-            </a>            
-        </div>
+                <a href="http://twitter.com/intent/tweet/?text=I%20just%20created%20a%20new%20HTML%20website%20on%20Azure%20using%20Azure%20DevOps%20Project&hashtags=AzureDevOpsProject%2CVSTS%20%40Azure%20%40VSTS">
+                    <img src="img/tweetThis.svg" />
+                </a>
+            </div>
             <div class="content-body">
                 <div class="success-text">Success!</div>
                 <div class="description line-1"> Azure DevOps Project has been successfully setup</div>
@@ -28,25 +28,29 @@
                             <div class="step-icon">
                                 <img src="img/cloneWhite.svg">
                             </div>
-                            <div class="step-text"><a href="https://go.microsoft.com/fwlink/?linkid=862409">Clone your code repository and start developing your application on IDE of your choice</a></div>
+                            <div class="step-text"><a href="https://go.microsoft.com/fwlink/?linkid=862409">Clone your
+                                    code repository and start developing your application on IDE of your choice</a></div>
                         </div>
                         <div class="step">
                             <div class="step-icon">
                                 <img src="img/deployWhite.svg">
                             </div>
-                            <div class="step-text"><a href="https://go.microsoft.com/fwlink/?linkid=862410">View your CI/CD pipeline on Visual Studio Team Services and customize it as per your needs</a></div>
+                            <div class="step-text"><a href="https://go.microsoft.com/fwlink/?linkid=862410">View your
+                                    CI/CD pipeline on Visual Studio Team Services and customize it as per your needs</a></div>
                         </div>
                         <div class="step">
                             <div class="step-icon">
                                 <img src="img/stackWhite.svg">
                             </div>
-                            <div class="step-text"><a href="http://portal.azure.com">View your service stack in the Azure Portal</a></div>
+                            <div class="step-text"><a href="http://portal.azure.com">View your service stack in the
+                                    Azure Portal</a></div>
                         </div>
                         <div class="step">
                             <div class="step-icon">
                                 <img src="img/lightbulbWhite.svg">
                             </div>
-                            <div class="step-text"><a href="https://go.microsoft.com/fwlink/?linkid=862126">Learn more about all you can do with Azure projects by visiting the documentation</a></div>
+                            <div class="step-text"><a href="https://go.microsoft.com/fwlink/?linkid=862126">Learn more
+                                    about all you can do with Azure projects by visiting the documentation</a></div>
                         </div>
                     </div>
                 </div>
@@ -58,7 +62,7 @@
         let myMap = new Map();
 
         for (let enlace of a) {
-            if (!myMap.has(enlace.hostname)){
+            if (!myMap.has(enlace.hostname)) {
                 myMap.set(enlace.hostname, enlace.hostname)
                 console.log(enlace.hostname);
             }
@@ -67,6 +71,14 @@
         /* let hostnames = a.map( a => a.hostname );
         let results = new Set(hostnames);
         console.log(results); */
+
+
+        /* Extraer todas las imágenes dentro de la clase step y todos los links */
+        console.log(document.querySelectorAll('.step img, a'));
+        /* Extraer las imágenes precedidas de un elemento de la clase step-icon */
+        console.log(document.querySelectorAll('.step-icon ~ img'));
+        /* Elementos con el atributo href definido a https://go.microsoft.com/fwlink/?linkid=862126 */
+        console.log(document.querySelectorAll('[href="https://go.microsoft.com/fwlink/?linkid=862126"]'));
     </script>
 </body>
 
