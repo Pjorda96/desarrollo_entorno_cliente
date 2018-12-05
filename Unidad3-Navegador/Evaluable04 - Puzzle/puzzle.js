@@ -1,3 +1,8 @@
+/**
+ * Pide las particiones del puzzle para que quede cuadrado (raíz cuadrada)
+ * 
+ * @returns (Number) particiones
+ */
 function getNumberPiecesFromUser() {
   let particiones = prompt('Introduce el numero de particiones del puzzle (solo numeros con raiz cuadrada)');
 
@@ -8,18 +13,56 @@ function getNumberPiecesFromUser() {
   return parseInt(particiones);
 }
 
+/**
+ * Devuelve el doble de las particiones
+ * 
+ * @param {Number} particiones 
+ * 
+ * @returns {Number} particiones * 2
+ */
 function getMaxScore(particiones) {
   return particiones * 2;
 }
 
+/**
+ * Recoge el score actual de la partirda, en formato numérico y lo devuelve
+ * 
+ * @returns {Number} Score
+ */
 function getScore() {
-  return score;
+  let score = document.getElementById('score').textContent;
+  score = score.split(' ');
+  return parseInt(score[1]);
 }
 
-let particiones = getNumberPiecesFromUser();
-let maxScore = getMaxScore(particiones);
-let score = maxScore;
+/**
+ * Cambia en el HTML la puntuación actual por la nueva puntuación
+ * 
+ * @param {Number} newScore 
+ */
+function updateScore(newScore) {
+  let oldScore = document.getElementById('score').textContent;
+  oldScore = oldScore.split(' ');
+  document.getElementById('score').textContent = oldScore[0] + ' ' + newScore;
+}
 
-console.log(score);
-console.log(typeof(score));
+/**
+ * Actualiza la puntuación en el HTML decrementando su valor actual por el valor del parámetro de entrada(restándolo)
+ * 
+ * @param {Number} decrease 
+ */
+function decreaseScore(decrease) {
+  let oldScore = document.getElementById('score').textContent;
+  oldScore = oldScore.split(' ');
+  let newScore = parseInt(oldScore[1]) - decrease;
+  document.getElementById('score').textContent = oldScore[0] + ' ' + newScore;
+}
+
+//let particiones = getNumberPiecesFromUser();   descomentar
+let particiones = 9;
+let maxScore = getMaxScore(particiones);
+
+console.log(updateScore(getMaxScore(particiones)));
+console.log(decreaseScore(8));
+console.log(getScore());
 
