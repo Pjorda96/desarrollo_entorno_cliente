@@ -58,6 +58,13 @@ function decreaseScore(decrease) {
   document.getElementById('score').textContent = oldScore[0] + ' ' + newScore;
 }
 
+function getNewSizes(ancho, alto) {
+  if (ancho === alto) {
+    return ancho;
+    return alto;
+  }
+}
+
 //let particiones = getNumberPiecesFromUser();   descomentar
 let particiones = 9;
 let maxScore = getMaxScore(particiones);
