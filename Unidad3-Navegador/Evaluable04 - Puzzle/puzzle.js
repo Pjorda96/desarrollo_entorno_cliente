@@ -47,7 +47,8 @@ function updateScore(newScore) {
 }
 
 /**
- * Actualiza la puntuación en el HTML decrementando su valor actual por el valor del parámetro de entrada(restándolo)
+ * Actualiza la puntuación en el HTML decrementando su valor actual por el valor 
+ * del parámetro de entrada(restándolo)
  * 
  * @param {Number} decrease 
  */
@@ -58,18 +59,51 @@ function decreaseScore(decrease) {
   document.getElementById('score').textContent = oldScore[0] + ' ' + newScore;
 }
 
+
+/**
+ * Devulve una nueva anchura y altura teniendo en cuenta que la dimensión(anchura o altura) 
+ * más grande mide exactamente 200 y que se mantiene la relación de aspecto entre la 
+ * anchura y altura
+ * 
+ * @param {Number} ancho 
+ * @param {Number} alto 
+ * 
+ * @returns {Array} dimensions
+ */
 function getNewSizes(ancho, alto) {
-  if (ancho === alto) {
-    return ancho;
-    return alto;
+  let dimensions = [];
+
+  if ( ancho === alto ) {
+    dimensions = [200, 200]
+
+  } else if ( ancho > alto ) {
+    let prop = alto / ancho;
+
+    dimensions = [200, 200 * prop];
+
+  } else if ( alto > ancho ) {
+    let prop = ancho / alto;
+
+    dimensions = [200 * prop, 200];
   }
+
+  return dimensions;
+}
+
+/**
+ * Baraja los elementos del array de forma aleatoria
+ * 
+ * @param {Array} array 
+ */
+function shuffle(array) {
+
 }
 
 //let particiones = getNumberPiecesFromUser();   descomentar
 let particiones = 9;
 let maxScore = getMaxScore(particiones);
 
-console.log(updateScore(getMaxScore(particiones)));
-console.log(decreaseScore(8));
-console.log(getScore());
 
+let dim = getNewSizes(10, 100);
+console.log(dim);
+console.log(typeof (dim));
