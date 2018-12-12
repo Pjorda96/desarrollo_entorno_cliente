@@ -94,6 +94,8 @@ function getNewSizes(ancho, alto) {
  * Baraja los elementos del array de forma aleatoria
  * 
  * @param {Array} array 
+ * 
+ * @returns {Array} barajado
  */
 function shuffle(array) {
 
