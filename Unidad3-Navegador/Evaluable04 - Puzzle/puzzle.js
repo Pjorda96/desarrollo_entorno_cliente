@@ -99,6 +99,31 @@ function getNewSizes(ancho, alto) {
  */
 function shuffle(array) {
 
+  for (let i = array.length - 1; i > 0; i--) {
+    let rdm = Math.floor((Math.random() * i));
+    let cambiador = array[i];
+
+    array[i] = array[rdm];
+    array[rdm] = cambiador;
+  }
+
+  return array;
+
+}
+
+/**
+ * Devuelve el número de fila y columna correspondiente teniendo en
+ cuenta que el puzzle se organiza en un número de filas y columnas igual
+ a la raíz cuadrada del número de piezas. 
+
+ * Las piezas van posicionadas por filas empezando desde arriba y 
+ leyendo dichas filas de izquierda a derecha.
+ * 
+ * @param {Number} numeroPieza //Número de pieza del puzzle (del 0 a N - 1)
+ * @param {Number} piezas //Número total de piezas del puzzle
+ */
+function pieceNumberToRowsColumns(numeroPieza, piezas) {
+
 }
 
 //let particiones = getNumberPiecesFromUser();   descomentar
@@ -106,6 +131,9 @@ let particiones = 9;
 let maxScore = getMaxScore(particiones);
 
 
-let dim = getNewSizes(10, 100);
-console.log(dim);
-console.log(typeof (dim));
+let array = [1,2,3,4,5,6,7,8,9,10];
+console.log(shuffle(array));
+console.log(typeof (array));
+
+//form para averiguar la celda
+//celda = fila*sqrt + fila + columna
