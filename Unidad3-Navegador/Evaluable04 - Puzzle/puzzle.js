@@ -136,14 +136,56 @@ function pieceNumberToRowsColumns(numeroPiezas, piezas) {
 
   return position;
 }
+
+/**
+ * Crea una tabla HTML conformada por un número igual de filas y columnas.
+ * El número de las mismas es igual a la raíz cuadrada del número de piezas del puzzle.
+ * 
+ * @param {Number} numeroPiezas 
+ * @param {Number} anchura
+ * @param {Number} altura
+ * @param {*} direccion 
+ */
+function createPuzzleLayout(numeroPiezas, anchura, altura, direccion) {
+  //Crear la tabla
+  let dim = Math.sqrt(numeroPiezas);
+  let scr = document.getElementsByTagName('script')[0];
+  let tabla = document.createElement('table');
+  let posicion = 0;
   
+  for (let i = 0; i <= dim - 1; i++) {
+    let tr = document.createElement('tr');
+
+    tabla.appendChild(tr);
+
+    let fila = tabla.lastElementChild;
+
+    for (let j = 0; j <= dim - 1; j++) {
+      let td = document.createElement('td');
+
+      td.setAttribute('id', 'piece' + posicion);
+      td.setAttribute('style', 'border: 3px solid black; background-image: url("cat.jpg")');
+      td.setAttribute('style', td.getAttribute('style') + '; height: ' + (anchura / dim - 1) + 'px; width: ' + (altura / dim - 1) + 'px;');
+
+      //borrar
+      td.textContent = 'piece' + posicion;
+
+      fila.appendChild(td);
+      posicion ++;
+
+    }
+  }
+  document.getElementsByTagName('body')[0].insertBefore(tabla, scr);
+
+}
+
 
 //let particiones = getNumberPiecesFromUser();   descomentar
 let particiones = 9;
 let maxScore = getMaxScore(particiones);
 
 
-console.log(pieceNumberToRowsColumns(4, 9));
+console.log(createPuzzleLayout(16, 900, 900,1));
 //console.log(typeof (array));
 
 //form para averiguar la celda
