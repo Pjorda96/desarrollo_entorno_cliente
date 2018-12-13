@@ -121,19 +121,30 @@ function shuffle(array) {
  * 
  * @param {Number} numeroPieza //Número de pieza del puzzle (del 0 a N - 1)
  * @param {Number} piezas //Número total de piezas del puzzle
+ * 
+ * @returns {Array} {columna, fila}
  */
-function pieceNumberToRowsColumns(numeroPieza, piezas) {
+function pieceNumberToRowsColumns(numeroPiezas, piezas) {
 
+  let position = [];
+  let dim = Math.sqrt(piezas);
+  let fila = Math.floor(numeroPiezas / dim);
+  let columna = numeroPiezas % dim;
+
+  position.push(fila);
+  position.push(columna);
+
+  return position;
 }
+  
 
 //let particiones = getNumberPiecesFromUser();   descomentar
 let particiones = 9;
 let maxScore = getMaxScore(particiones);
 
 
-let array = [1,2,3,4,5,6,7,8,9,10];
-console.log(shuffle(array));
-console.log(typeof (array));
+console.log(pieceNumberToRowsColumns(4, 9));
+//console.log(typeof (array));
 
 //form para averiguar la celda
 //celda = fila*sqrt + fila + columna
