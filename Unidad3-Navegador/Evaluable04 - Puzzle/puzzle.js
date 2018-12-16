@@ -119,20 +119,20 @@ function shuffle(array) {
  * Las piezas van posicionadas por filas empezando desde arriba y 
  leyendo dichas filas de izquierda a derecha.
  * 
- * @param {Number} numeroPieza //Número de pieza del puzzle (del 0 a N - 1)
+ * @param {Number} numPieza //Número de pieza del puzzle (del 0 a N - 1)
  * @param {Number} piezas //Número total de piezas del puzzle
  * 
  * @returns {Array} {columna, fila}
  */
-function pieceNumberToRowsColumns(numeroPiezas, piezas) {
+function pieceNumberToRowsColumns(numPieza, piezas) {
 
   let position = [];
   let dim = Math.sqrt(piezas);
-  let fila = Math.floor(numeroPiezas / dim);
-  let columna = numeroPiezas % dim;
+  let fila = Math.floor(numPieza / dim);
+  let columna = numPieza % dim;
 
-  position.push(fila);
   position.push(columna);
+  position.push(fila);
 
   return position;
 }
@@ -141,14 +141,13 @@ function pieceNumberToRowsColumns(numeroPiezas, piezas) {
  * Crea una tabla HTML conformada por un número igual de filas y columnas.
  * El número de las mismas es igual a la raíz cuadrada del número de piezas del puzzle.
  * 
- * @param {Number} numeroPiezas 
+ * @param {Number} totalPiezas 
  * @param {Number} anchura
  * @param {Number} altura
  * @param {*} direccion 
  */
-function createPuzzleLayout(numeroPiezas, anchura, altura, direccion) {
-  //Crear la tabla
-  let dim = Math.sqrt(numeroPiezas);
+function createPuzzleLayout(totalPiezas, anchura, altura, direccion) {
+  let dim = Math.sqrt(totalPiezas);
   let scr = document.getElementsByTagName('script')[0];
   let tabla = document.createElement('table');
   let posicion = 0;
@@ -163,12 +162,14 @@ function createPuzzleLayout(numeroPiezas, anchura, altura, direccion) {
     for (let j = 0; j <= dim - 1; j++) {
       let td = document.createElement('td');
 
-      td.setAttribute('id', 'piece' + posicion);
-      td.setAttribute('style', 'border: 3px solid black; background-image: url("cat.jpg")');
-      td.setAttribute('style', td.getAttribute('style') + '; height: ' + (anchura / dim - 1) + 'px; width: ' + (altura / dim - 1) + 'px;');
+      td.id = 'piece' + posicion;
+      td.style = 'border: 3px solid black; ';
+      td.style.backgroundImage = 'url(' + direccion + ')';
+      td.height = anchura / dim;
+      td.width = altura / dim;
 
       //borrar
-      td.textContent = 'piece' + posicion;
+      td.textContent = 'piece' + posicion; //borrar
 
       fila.appendChild(td);
       posicion ++;
@@ -177,7 +178,66 @@ function createPuzzleLayout(numeroPiezas, anchura, altura, direccion) {
   }
   document.getElementsByTagName('body')[0].insertBefore(tabla, scr);
 
+  //borrar
+  let img = document.createElement('img'); //borrar
+  img.setAttribute('src', 'cat.jpg'); //borrar
+  document.getElementsByTagName('body')[0].insertBefore(img, scr); //borrar
 }
+
+/**
+ * Devuelve el desplazamiento del fondo para una pieza determinada del puzzle.
+ * Para ello se tiene en cuenta que cada pieza del puzzle tiene un ancho y alto determinado, 
+ * y que además la esquina superior izquierda de la imagen es el punto de referencia(0, 0)
+ * 
+ * @param {Number} numeroPieza 
+ * @param {Number} anchura 
+ * @param {Number} altura 
+ * @param {Number} totalPiezas 
+ * 
+ * @returns {Array} {h, v}
+ */
+function pieceToOffset(numeroPieza, anchura, altura, totalPiezas) {
+  let anchoPieza = anchura / Math.sqrt(totalPiezas);
+  let altoPieza = altura / Math.sqrt(totalPiezas);
+  
+  let posi = pieceNumberToRowsColumns(numeroPieza, totalPiezas);
+  
+  let desplazamiento = [];
+  //8 = 3px border * 2 + 1px margin * 2
+  let desplazamientoH = ((8 + anchoPieza) * posi[0]) * (-1);
+  let desplazamientoV = (8 + altoPieza) * posi[1];
+  desplazamiento.push(desplazamientoH);
+  desplazamiento.push(desplazamientoV);
+
+  return desplazamiento;
+}
+
+/**
+ * Devuelve un array con el desplazamiento(offset) de cada una de las piezas del puzzle
+ * 
+ * @param {Number} anchura 
+ * @param {Number} altura 
+ * @param {Number} totalPiezas 
+ * 
+ * @returns {Map} 
+ */
+function createReferenceSolution(anchura, altura, totalPiezas) {
+  let desplazamiento = new Map();
+
+  for (let i = 0; i <= totalPiezas - 1; i++) {
+    let k = pieceToOffset(i, anchura, altura, totalPiezas);
+
+    desplazamiento.set(i, k);
+    
+  }
+
+  return desplazamiento;
+}
+
+
+
+
+
 
 
 //let particiones = getNumberPiecesFromUser();   descomentar
@@ -185,8 +245,8 @@ let particiones = 9;
 let maxScore = getMaxScore(particiones);
 
 
-console.log(createPuzzleLayout(16, 900, 900,1));
-//console.log(typeof (array));
+createPuzzleLayout(9, 1277, 958, "cat.jpg");
+console.log(createReferenceSolution(1277, 958, 9));
 
 //form para averiguar la celda
 //celda = fila*sqrt + fila + columna
