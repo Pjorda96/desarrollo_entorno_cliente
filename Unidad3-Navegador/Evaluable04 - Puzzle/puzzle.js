@@ -204,8 +204,8 @@ function pieceToOffset(numeroPieza, anchura, altura, totalPiezas) {
   
   let desplazamiento = [];
   //8 = 3px border * 2 + 1px margin * 2
-  let desplazamientoH = ((8 + anchoPieza) * posi[0]) * (-1);
-  let desplazamientoV = (8 + altoPieza) * posi[1];
+  let desplazamientoH = (anchoPieza * posi[0]) * (-1);
+  let desplazamientoV = altoPieza * posi[1];
   desplazamiento.push(desplazamientoH);
   desplazamiento.push(desplazamientoV);
 
@@ -219,23 +219,33 @@ function pieceToOffset(numeroPieza, anchura, altura, totalPiezas) {
  * @param {Number} altura 
  * @param {Number} totalPiezas 
  * 
- * @returns {Map} 
+ * @returns {Array} 
  */
 function createReferenceSolution(anchura, altura, totalPiezas) {
-  let desplazamiento = new Map();
+  let desplazamiento = [];
 
   for (let i = 0; i <= totalPiezas - 1; i++) {
     let k = pieceToOffset(i, anchura, altura, totalPiezas);
 
-    desplazamiento.set(i, k);
+    desplazamiento.push(k);
     
   }
 
   return desplazamiento;
 }
 
-
-
+/**
+ * Cambia el fondo de cada una de las celdas de la tabla 
+ * con el desplazamiento indicado
+ * 
+ * @param {Array} desplazamiento 
+ */
+function drawContentPuzzle(desplazamiento) {
+  for (let i = 0; i < desplazamiento.length; i++) {
+    let td = document.getElementById('piece' + i);
+    td.style.backgroundPosition = desplazamiento[i[1]] + ' ' + desplazamiento[i[0]];
+  }
+}
 
 
 
@@ -246,7 +256,11 @@ let maxScore = getMaxScore(particiones);
 
 
 createPuzzleLayout(9, 1277, 958, "cat.jpg");
-console.log(createReferenceSolution(1277, 958, 9));
+console.log(createReferenceSolution(958, 1277, 9));
+//drawContentPuzzle(createReferenceSolution(1277, 958, 9));
+let td = document.getElementById('piece2');
+td.style.backgroundPosition = '0 -638.6666666666666';
+
 
 //form para averiguar la celda
 //celda = fila*sqrt + fila + columna
