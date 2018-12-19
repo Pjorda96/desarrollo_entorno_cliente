@@ -204,8 +204,8 @@ function pieceToOffset(numeroPieza, anchura, altura, totalPiezas) {
   
   let desplazamiento = [];
   //8 = 3px border * 2 + 1px margin * 2
-  let desplazamientoH = (anchoPieza * posi[0]) * (-1);
-  let desplazamientoV = altoPieza * posi[1];
+  let desplazamientoH = anchoPieza * posi[0] * (-1);
+  let desplazamientoV = altoPieza * posi[1] * (-1);
   desplazamiento.push(desplazamientoH);
   desplazamiento.push(desplazamientoV);
 
@@ -243,7 +243,7 @@ function createReferenceSolution(anchura, altura, totalPiezas) {
 function drawContentPuzzle(desplazamiento) {
   for (let i = 0; i < desplazamiento.length; i++) {
     let td = document.getElementById('piece' + i);
-    td.style.backgroundPosition = desplazamiento[i[1]] + ' ' + desplazamiento[i[0]];
+    td.style.backgroundPosition = desplazamiento[i][0] + 'px ' + desplazamiento[i][1] + 'px';
   }
 }
 
@@ -257,9 +257,7 @@ let maxScore = getMaxScore(particiones);
 
 createPuzzleLayout(9, 1277, 958, "cat.jpg");
 console.log(createReferenceSolution(958, 1277, 9));
-//drawContentPuzzle(createReferenceSolution(1277, 958, 9));
-let td = document.getElementById('piece2');
-td.style.backgroundPosition = '0 -638.6666666666666';
+drawContentPuzzle(createReferenceSolution(958, 1277, 9));
 
 
 //form para averiguar la celda
