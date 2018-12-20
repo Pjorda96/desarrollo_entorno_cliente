@@ -20,7 +20,7 @@ function getNumberPiecesFromUser() {
  * 
  * @returns {Number} particiones * 2
  */
-function getMaxScore(particiones) {
+function getMaxScore(particiones = 9) {
   return particiones * 2;
 }
 
@@ -177,11 +177,6 @@ function createPuzzleLayout(totalPiezas, anchura, altura, direccion) {
     }
   }
   document.getElementsByTagName('body')[0].insertBefore(tabla, scr);
-
-  //borrar
-  let img = document.createElement('img'); //borrar
-  img.setAttribute('src', 'cat.jpg'); //borrar
-  document.getElementsByTagName('body')[0].insertBefore(img, scr); //borrar
 }
 
 /**
@@ -247,12 +242,30 @@ function drawContentPuzzle(desplazamiento) {
   }
 }
 
+/**
+ * Devuelve si el puzzle está terminado
+ * 
+ * @param {Array} solucionado 
+ * @param {Array} actual 
+ * 
+ * @returns {boolean}
+ */
+function checkIfSolution(solucionado, actual) {
+  for (let i = 0; i < solucionado.length; i++) {
+      if (solucionado[i] !== actual[i]) {
+        return false;
+      }
+  }
+  return true;
+}
+
 
 
 
 //let particiones = getNumberPiecesFromUser();   descomentar
-let particiones = 9;
-let maxScore = getMaxScore(particiones);
+
+
+let maxScore = getMaxScore();
 
 
 createPuzzleLayout(9, 1277, 958, "cat.jpg");
