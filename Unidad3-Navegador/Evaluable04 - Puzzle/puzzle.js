@@ -259,7 +259,30 @@ function checkIfSolution(solucionado, actual) {
   return true;
 }
 
+/**
+ * Carga dinámicamente una imagen en JavaScript a partir de una URL.
+ * Cuando la imagen está cargada en el objeto, se dispara un evento que 
+ * ejecuta la lógica del juego
+ * 
+ * @param {Url} imageURL 
+ * @param {Number} numeroPiezas 
+ */
+function initGame(imageURL, numeroPiezas) {
+  let img = new Image();
+  img.addEventListener('load', function () {
+    gameLogic(img, numeroPiezas);
+  });
+  img.src = imageURL;
+}
 
+/**
+ * 
+ * @param {Image} imagen 
+ * @param {Number} numPieza 
+ */
+function gameLogic(imagen, numPieza) {
+
+}
 
 
 //let particiones = getNumberPiecesFromUser();   descomentar
