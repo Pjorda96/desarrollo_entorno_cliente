@@ -278,22 +278,25 @@ function initGame(imageURL, numeroPiezas) {
 /**
  * 
  * @param {Image} imagen 
- * @param {Number} numPieza 
+ * @param {Number} numeroPiezas 
  */
-function gameLogic(imagen, numPieza) {
+function gameLogic(imagen, numeroPiezas) {
+  document.getElementById('score').textContent += ' ' + getMaxScore(numeroPiezas);
 
+  //añadir foto
+
+  //añadir tabla
 }
 
+let numeroPiezas = getNumberPiecesFromUser();
+let img = 'cat.jpg';
 
-//let particiones = getNumberPiecesFromUser();   descomentar
+initGame(img, numeroPiezas);
 
 
-let maxScore = getMaxScore();
-
-
-createPuzzleLayout(9, 1277, 958, "cat.jpg");
+/*createPuzzleLayout(9, 1277, 958, "cat.jpg");
 console.log(createReferenceSolution(958, 1277, 9));
-drawContentPuzzle(createReferenceSolution(958, 1277, 9));
+drawContentPuzzle(createReferenceSolution(958, 1277, 9)); */
 
 
 //form para averiguar la celda
