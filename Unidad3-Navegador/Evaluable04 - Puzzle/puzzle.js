@@ -284,6 +284,7 @@ function gameLogic(imagen, numeroPiezas) {
   document.getElementById('score').textContent += ' ' + getMaxScore(numeroPiezas);
 
   //añadir foto
+  //td.style.backgroundImage = 'url(' + direccion + ')';
 
   //añadir tabla
 }
@@ -291,7 +292,7 @@ function gameLogic(imagen, numeroPiezas) {
 let numeroPiezas = getNumberPiecesFromUser();
 let img = 'cat.jpg';
 
-initGame(img, numeroPiezas);
+initGame('cat.jpg', numeroPiezas);
 
 
 /*createPuzzleLayout(9, 1277, 958, "cat.jpg");
