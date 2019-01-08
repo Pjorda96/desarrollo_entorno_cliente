@@ -284,7 +284,9 @@ function gameLogic(imagen, numeroPiezas) {
   document.getElementById('score').textContent += ' ' + getMaxScore(numeroPiezas);
 
   //añadir foto
-  //td.style.backgroundImage = 'url(' + direccion + ')';
+  let img = document.getElementById('div_solution');
+  img = img.createElement("IMG");
+  img.src = imagen;
 
   //añadir tabla
 }
