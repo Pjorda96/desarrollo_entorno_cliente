@@ -281,12 +281,14 @@ function initGame(imageURL, numeroPiezas) {
  * @param {Number} numeroPiezas 
  */
 function gameLogic(imagen, numeroPiezas) {
+  let sizes = getNewSizes(imagen.width, imagen.height);
+  let imagen2 = new Image();
+  let seleccionado = undefined;
+
   //poner puntuacion
   document.getElementById('score').textContent += ' ' + getMaxScore(numeroPiezas);
 
   //añadir foto
-  let sizes = getNewSizes(imagen.width, imagen.height);
-  let imagen2 = new Image();
   imagen2.src = imagen.src;
   imagen2.style.width = sizes[0] + 'px';
   imagen2.style.height = sizes[1] + 'px';
@@ -296,11 +298,35 @@ function gameLogic(imagen, numeroPiezas) {
   createPuzzleLayout(numeroPiezas, imagen.height, imagen.width, imagen.src);
   drawContentPuzzle(createReferenceSolution(imagen.width, imagen.height, numeroPiezas));
 
+  //evento a cada celda
+  for (let i = 0; i < numeroPiezas; i++) {
+    document.getElementsByTagName('td')[i].addEventListener('click', movimiento);
+  }
   
+  function movimiento(){
+    if (seleccionado === undefined) { //no hay ninguna pieza seleccionada
+      seleccionado = parseInt(this.id.substring(5, this.id.length));
+      this.style.border = 'solid 3px red';
+    } else {
+      if (parseInt(this.id.substring(5, this.id.length)) === seleccionado) {
+        seleccionado = undefined;
+        this.style.border = 'solid 3px black';
+      } else {
+        document.getElementById('piece' + seleccionado).style.border = 'solid 3px black';
+        seleccionado = undefined;
+        this.style.border = 'solid 3px black';
+
+        decreaseScore(1);
+        checkIfSolution()
+      }
+    }
+    
+
+  }
 }
 
-//let numeroPiezas = getNumberPiecesFromUser();
-let numeroPiezas = 9;//borrar
+/* let numeroPiezas = getNumberPiecesFromUser();
+// */let numeroPiezas = 9;
 
 initGame('cat.jpg', numeroPiezas);
 
