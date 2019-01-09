@@ -68,7 +68,7 @@ function decreaseScore(decrease) {
  * @param {Number} ancho 
  * @param {Number} alto 
  * 
- * @returns {Array} dimensions
+ * @returns {Array} anchoAlto
  */
 function getNewSizes(ancho, alto) {
   let dimensions = [];
@@ -281,25 +281,28 @@ function initGame(imageURL, numeroPiezas) {
  * @param {Number} numeroPiezas 
  */
 function gameLogic(imagen, numeroPiezas) {
+  //poner puntuacion
   document.getElementById('score').textContent += ' ' + getMaxScore(numeroPiezas);
 
   //añadir foto
-  let img = document.getElementById('div_solution');
-  img = img.createElement("IMG");
-  img.src = imagen;
-
+  let sizes = getNewSizes(imagen.width, imagen.height);
+  let imagen2 = new Image();
+  imagen2.src = imagen.src;
+  imagen2.style.width = sizes[0] + 'px';
+  imagen2.style.height = sizes[1] + 'px';
+  document.getElementById('div_solution').appendChild(imagen2);
+  
   //añadir tabla
+  createPuzzleLayout(numeroPiezas, imagen.height, imagen.width, imagen.src);
+  drawContentPuzzle(createReferenceSolution(imagen.width, imagen.height, numeroPiezas));
+
+  
 }
 
-let numeroPiezas = getNumberPiecesFromUser();
-let img = 'cat.jpg';
+//let numeroPiezas = getNumberPiecesFromUser();
+let numeroPiezas = 9;//borrar
 
 initGame('cat.jpg', numeroPiezas);
-
-
-/*createPuzzleLayout(9, 1277, 958, "cat.jpg");
-console.log(createReferenceSolution(958, 1277, 9));
-drawContentPuzzle(createReferenceSolution(958, 1277, 9)); */
 
 
 //form para averiguar la celda
