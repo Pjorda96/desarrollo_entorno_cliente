@@ -167,9 +167,9 @@ function createPuzzleLayout(totalPiezas, anchura, altura, direccion) {
       td.style.backgroundImage = 'url(' + direccion + ')';
       td.width = anchura / dim;
       td.height = altura / dim;
-
-      //borrar
-      td.textContent = 'piece' + posicion; //borrar
+      td.textContent = 'piece' + pieceNumberToRowsColumns(posicion, totalPiezas)[1] 
+      + ',' + pieceNumberToRowsColumns(posicion, totalPiezas)[0];
+      
 
       fila.appendChild(td);
       posicion ++;
@@ -238,14 +238,12 @@ function drawContentPuzzle(desplazamiento) {
   let arrayAux = []
   for (let i = 0; i < arrayActual.length; i++) {
     arrayAux.push(desplazamiento[arrayActual[i]]);
-    console.log(arrayActual[i]);
   }
 
   for (let i = 0; i < arrayAux.length; i++) {
     let td = document.getElementById('piece' + i);
     td.style.backgroundPosition = arrayAux[i][0] + 'px ' + arrayAux[i][1] + 'px';
   }
-  console.log(arrayAux);
   
 }
 
@@ -311,7 +309,7 @@ function gameLogic(imagen, numeroPiezas) {
     celda.addEventListener('click', movimiento);
     arrayActual.push(parseInt(celda.id.substring(5, celda.id.length)));
   }
-  console.log(arrayActual);
+  //console.log(arrayActual);
   
   
   function movimiento(){
@@ -344,9 +342,14 @@ let arrayModelo = [];
 for (let i = 0; i < numeroPiezas; i++) {
   arrayModelo.push(i);
 }
-let arrayActual = shuffle(arrayModelo);
+let arrayActual = [];
+arrayActual = shuffle(arrayActual);
 
 initGame('cat.jpg', numeroPiezas);
+
+console.log(arrayModelo);
+console.log(arrayActual);
+
 
 
 //form para averiguar la celda
