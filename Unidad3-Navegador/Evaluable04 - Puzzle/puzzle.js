@@ -165,8 +165,8 @@ function createPuzzleLayout(totalPiezas, anchura, altura, direccion) {
       td.id = 'piece' + posicion;
       td.style = 'border: 3px solid black; ';
       td.style.backgroundImage = 'url(' + direccion + ')';
-      td.height = anchura / dim;
-      td.width = altura / dim;
+      td.width = anchura / dim;
+      td.height = altura / dim;
 
       //borrar
       td.textContent = 'piece' + posicion; //borrar
@@ -198,7 +198,6 @@ function pieceToOffset(numeroPieza, anchura, altura, totalPiezas) {
   let posi = pieceNumberToRowsColumns(numeroPieza, totalPiezas);
   
   let desplazamiento = [];
-  //8 = 3px border * 2 + 1px margin * 2
   let desplazamientoH = anchoPieza * posi[0] * (-1);
   let desplazamientoV = altoPieza * posi[1] * (-1);
   desplazamiento.push(desplazamientoH);
@@ -236,10 +235,18 @@ function createReferenceSolution(anchura, altura, totalPiezas) {
  * @param {Array} desplazamiento 
  */
 function drawContentPuzzle(desplazamiento) {
-  for (let i = 0; i < desplazamiento.length; i++) {
-    let td = document.getElementById('piece' + i);
-    td.style.backgroundPosition = desplazamiento[i][0] + 'px ' + desplazamiento[i][1] + 'px';
+  let arrayAux = []
+  for (let i = 0; i < arrayActual.length; i++) {
+    arrayAux.push(desplazamiento[arrayActual[i]]);
+    console.log(arrayActual[i]);
   }
+
+  for (let i = 0; i < arrayAux.length; i++) {
+    let td = document.getElementById('piece' + i);
+    td.style.backgroundPosition = arrayAux[i][0] + 'px ' + arrayAux[i][1] + 'px';
+  }
+  console.log(arrayAux);
+  
 }
 
 /**
@@ -295,13 +302,17 @@ function gameLogic(imagen, numeroPiezas) {
   document.getElementById('div_solution').appendChild(imagen2);
   
   //añadir tabla
-  createPuzzleLayout(numeroPiezas, imagen.height, imagen.width, imagen.src);
+  createPuzzleLayout(numeroPiezas, imagen.width, imagen.height, imagen.src);
   drawContentPuzzle(createReferenceSolution(imagen.width, imagen.height, numeroPiezas));
 
+
   //evento a cada celda
-  for (let i = 0; i < numeroPiezas; i++) {
-    document.getElementsByTagName('td')[i].addEventListener('click', movimiento);
+  for(let celda of document.getElementsByTagName('td')) {
+    celda.addEventListener('click', movimiento);
+    arrayActual.push(parseInt(celda.id.substring(5, celda.id.length)));
   }
+  console.log(arrayActual);
+  
   
   function movimiento(){
     if (seleccionado === undefined) { //no hay ninguna pieza seleccionada
@@ -316,8 +327,10 @@ function gameLogic(imagen, numeroPiezas) {
         seleccionado = undefined;
         this.style.border = 'solid 3px black';
 
+        //cambiar piezas
+
         decreaseScore(1);
-        checkIfSolution()
+        checkIfSolution(arrayModelo, arrayActual);
       }
     }
     
@@ -327,6 +340,11 @@ function gameLogic(imagen, numeroPiezas) {
 
 /* let numeroPiezas = getNumberPiecesFromUser();
 // */let numeroPiezas = 9;
+let arrayModelo = [];
+for (let i = 0; i < numeroPiezas; i++) {
+  arrayModelo.push(i);
+}
+let arrayActual = shuffle(arrayModelo);
 
 initGame('cat.jpg', numeroPiezas);
 
