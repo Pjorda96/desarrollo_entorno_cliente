@@ -235,7 +235,7 @@ function createReferenceSolution(anchura, altura, totalPiezas) {
  * @param {Array} desplazamiento 
  */
 function drawContentPuzzle(desplazamiento) {
-  let arrayAux = []
+  let arrayAux = [];
   for (let i = 0; i < arrayActual.length; i++) {
     arrayAux.push(desplazamiento[arrayActual[i]]);
   }
@@ -301,29 +301,33 @@ function gameLogic(imagen, numeroPiezas) {
   
   //añadir tabla
   createPuzzleLayout(numeroPiezas, imagen.width, imagen.height, imagen.src);
-  drawContentPuzzle(createReferenceSolution(imagen.width, imagen.height, numeroPiezas));
-
+  createReferenceSolution(imagen.width, imagen.height, numeroPiezas).forEach(x => {
+    arrayModelo.push(x);
+    arrayActual.push(x);
+  });
+  drawContentPuzzle(shuffle(arrayActual));
+  
 
   //evento a cada celda
   for(let celda of document.getElementsByTagName('td')) {
     celda.addEventListener('click', movimiento);
-    arrayActual.push(parseInt(celda.id.substring(5, celda.id.length)));
+    //arrayActual.push(parseInt(celda.id.substring(5, celda.id.length)));
   }
-  //console.log(arrayActual);
+  console.log(arrayActual);
   
   
   function movimiento(){
     if (seleccionado === undefined) { //no hay ninguna pieza seleccionada
       seleccionado = parseInt(this.id.substring(5, this.id.length));
-      this.style.border = 'solid 3px red';
+      this.style.borderColor = 'red';
     } else {
       if (parseInt(this.id.substring(5, this.id.length)) === seleccionado) {
         seleccionado = undefined;
-        this.style.border = 'solid 3px black';
+        this.style.borderColor = 'black';
       } else {
         document.getElementById('piece' + seleccionado).style.border = 'solid 3px black';
         seleccionado = undefined;
-        this.style.border = 'solid 3px black';
+        this.style.borderColor = 'black';
 
         //cambiar piezas
 
@@ -336,18 +340,23 @@ function gameLogic(imagen, numeroPiezas) {
   }
 }
 
-/* let numeroPiezas = getNumberPiecesFromUser();
-// */let numeroPiezas = 9;
-let arrayModelo = [];
-for (let i = 0; i < numeroPiezas; i++) {
-  arrayModelo.push(i);
+function x(){
+  console.log(arrayModelo);
+  console.log(arrayActual);
 }
+
+/* let numeroPiezas = getNumberPiecesFromUser();
+// */let numeroPiezas =4;
+let arrayModelo = [];
+/* for (let i = 0; i < numeroPiezas; i++) {
+  arrayModelo.push(i);
+} */
 let arrayActual = [];
-arrayActual = shuffle(arrayActual);
+//arrayActual = shuffle(arrayModelo);
 
 initGame('cat.jpg', numeroPiezas);
 
-console.log(arrayModelo);
+x()
 console.log(arrayActual);
 
 
