@@ -236,15 +236,15 @@ function createReferenceSolution(anchura, altura, totalPiezas) {
  */
 function drawContentPuzzle(desplazamiento) {
   let arrayAux = [];
-  for (let i = 0; i < arrayActual.length; i++) {
-    arrayAux.push(desplazamiento[arrayActual[i]]);
+  
+  for (let i = 0; i < desplazamiento.length; i++) {
+    arrayAux.push(desplazamiento[i]);
   }
 
   for (let i = 0; i < arrayAux.length; i++) {
     let td = document.getElementById('piece' + i);
     td.style.backgroundPosition = arrayAux[i][0] + 'px ' + arrayAux[i][1] + 'px';
   }
-  
 }
 
 /**
@@ -348,11 +348,7 @@ function x(){
 /* let numeroPiezas = getNumberPiecesFromUser();
 // */let numeroPiezas =4;
 let arrayModelo = [];
-/* for (let i = 0; i < numeroPiezas; i++) {
-  arrayModelo.push(i);
-} */
 let arrayActual = [];
-//arrayActual = shuffle(arrayModelo);
 
 initGame('cat.jpg', numeroPiezas);
 
