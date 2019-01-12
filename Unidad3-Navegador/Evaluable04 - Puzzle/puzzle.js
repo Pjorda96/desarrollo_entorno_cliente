@@ -272,7 +272,7 @@ function checkIfSolution(solucionado, actual) {
  * @param {Url} imageURL 
  * @param {Number} numeroPiezas 
  */
-function initGame(imageURL, numeroPiezas) {
+function initGame(imageURL = 'cat.jpg', numeroPiezas = getNumberPiecesFromUser()) {
   let img = new Image();
   img.addEventListener('load', function () {
     gameLogic(img, numeroPiezas);
@@ -351,6 +351,14 @@ function gameLogic(imagen, numeroPiezas) {
           alert('Has ganado');
 
           removeListener();
+
+          //ampliacion 2
+          let btn = document.createElement('button');
+          btn.textContent = 'Volver a intentar';
+          btn.addEventListener('click', () => {
+            location.reload();
+          });
+          document.getElementsByTagName('body')[0].insertBefore(btn,document.getElementsByTagName('table')[0]);
         } else if (getScore() <= 0) {
           alert('No te quedan intentos');
 
@@ -369,8 +377,8 @@ function gameLogic(imagen, numeroPiezas) {
   }
 }
 
-/* let numeroPiezas = getNumberPiecesFromUser();
-// */let numeroPiezas =4;
+let numeroPiezas = getNumberPiecesFromUser();
+//let numeroPiezas =4;
 let arrayModelo = [];
 let arrayActual = [];
 
