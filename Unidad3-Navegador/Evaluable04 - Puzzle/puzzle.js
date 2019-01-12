@@ -56,7 +56,7 @@ function decreaseScore(decrease) {
   let oldScore = document.getElementById('score').textContent;
   oldScore = oldScore.split(' ');
   let newScore = parseInt(oldScore[1]) - decrease;
-  document.getElementById('score').textContent = oldScore[0] + ' ' + newScore;
+  updateScore(newScore);
 }
 
 
@@ -384,7 +384,8 @@ let arrayActual = [];
 
 initGame('cat.jpg', numeroPiezas);
 
-
+exports.getScore = getScore;
+exports.updateScore = updateScore;
 
 //form para averiguar la celda
 //celda = fila*sqrt + fila + columna
