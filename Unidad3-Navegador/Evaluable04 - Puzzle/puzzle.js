@@ -324,17 +324,27 @@ function gameLogic(imagen, numeroPiezas) {
         this.style.borderColor = 'black';
       } else {
         //cambiar piezas
+        let id = parseInt(this.id.substring(5, this.id.length));
         let aux = this.style.backgroundPosition;
         this.style.backgroundPosition = document.getElementById('piece' + seleccionado).style.backgroundPosition;
         document.getElementById('piece' + seleccionado).style.backgroundPosition = aux;
         //cambiar posiciones del array
-        aux = arrayActual[parseInt(this.id.substring(5, this.id.length))];
-        arrayActual[parseInt(this.id.substring(5, this.id.length))] = arrayActual[seleccionado];
+        aux = arrayActual[id];
+        arrayActual[id] = arrayActual[seleccionado];
         arrayActual[seleccionado] = aux
 
         document.getElementById('piece' + seleccionado).style.borderColor = 'black';
         seleccionado = undefined;
         this.style.borderColor = 'black';
+
+        //ampliacion 1
+        for (let celda of document.getElementsByTagName('td')) {
+          let id2 = parseInt(celda.id.substring(5, celda.id.length))
+          if (arrayActual[id2] === arrayModelo[id2]) {
+            celda.style.borderColor = 'green';
+            celda.removeEventListener('click', movimiento);
+          }
+        }
 
         decreaseScore(1);
         if (checkIfSolution(arrayModelo, arrayActual)) {
@@ -359,8 +369,8 @@ function gameLogic(imagen, numeroPiezas) {
   }
 }
 
-let numeroPiezas = getNumberPiecesFromUser();
-//let numeroPiezas =4;
+/* let numeroPiezas = getNumberPiecesFromUser();
+// */let numeroPiezas =4;
 let arrayModelo = [];
 let arrayActual = [];
 
