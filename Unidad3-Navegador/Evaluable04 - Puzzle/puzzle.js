@@ -311,9 +311,7 @@ function gameLogic(imagen, numeroPiezas) {
   //evento a cada celda
   for(let celda of document.getElementsByTagName('td')) {
     celda.addEventListener('click', movimiento);
-    //arrayActual.push(parseInt(celda.id.substring(5, celda.id.length)));
   }
-  console.log(arrayActual);
   
   
   function movimiento(){
@@ -325,14 +323,35 @@ function gameLogic(imagen, numeroPiezas) {
         seleccionado = undefined;
         this.style.borderColor = 'black';
       } else {
-        document.getElementById('piece' + seleccionado).style.border = 'solid 3px black';
+        //cambiar piezas
+        let aux = this.style.backgroundPosition;
+        this.style.backgroundPosition = document.getElementById('piece' + seleccionado).style.backgroundPosition;
+        document.getElementById('piece' + seleccionado).style.backgroundPosition = aux;
+        //cambiar posiciones del array
+        aux = arrayActual[parseInt(this.id.substring(5, this.id.length))];
+        arrayActual[parseInt(this.id.substring(5, this.id.length))] = arrayActual[seleccionado];
+        arrayActual[seleccionado] = aux
+
+        document.getElementById('piece' + seleccionado).style.borderColor = 'black';
         seleccionado = undefined;
         this.style.borderColor = 'black';
 
-        //cambiar piezas
-
         decreaseScore(1);
-        checkIfSolution(arrayModelo, arrayActual);
+        if (checkIfSolution(arrayModelo, arrayActual)) {
+          alert('Has ganado');
+
+          removeListener();
+        } else if (getScore() <= 0) {
+          alert('No te quedan intentos');
+
+          removeListener();
+        }
+
+        function removeListener() {
+          for (let celda of document.getElementsByTagName('td')) {
+            celda.removeEventListener('click', movimiento);
+          }
+        }
       }
     }
     
