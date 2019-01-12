@@ -359,20 +359,12 @@ function gameLogic(imagen, numeroPiezas) {
   }
 }
 
-function x(){
-  console.log(arrayModelo);
-  console.log(arrayActual);
-}
-
-/* let numeroPiezas = getNumberPiecesFromUser();
-// */let numeroPiezas =4;
+let numeroPiezas = getNumberPiecesFromUser();
+//let numeroPiezas =4;
 let arrayModelo = [];
 let arrayActual = [];
 
 initGame('cat.jpg', numeroPiezas);
-
-x()
-console.log(arrayActual);
 
 
 
