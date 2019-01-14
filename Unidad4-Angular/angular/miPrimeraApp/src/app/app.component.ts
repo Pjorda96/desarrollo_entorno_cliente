@@ -6,5 +6,29 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'miPrimeraApp';
+  title : string = 'miPrimeraApp';
+  buttonText: string = 'Save';
+  isDisabled: boolean = false;
+  name: string = '';
+  position: string = '';
+
+  saveEvent() {
+    if(this.buttonText === 'Save') {
+      this.buttonText = 'Edit';
+      this.isDisabled = true;
+    } else {
+      this.buttonText = 'Save';
+      this.isDisabled = false;
+    }
+  }
+
+  showInformation() {
+    alert(this.name+' '+this.position);
+  }
+
+  resetInformation() {
+    this.name = '';
+    this.position = '';
+  }
+
 }
