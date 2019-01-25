@@ -1,0 +1,9 @@
+<div id="informacion">
+  <table>
+    <tr *ngFor="let fila of this.columnas(); let i = index">
+      <td *ngFor="let fila of this.filas(); let j=index" (click)="changeBackground($event, i, j)" [style.backgroundColor]="">
+        <p></p>
+      </td>
+    </tr>
+  </table>
+</div>

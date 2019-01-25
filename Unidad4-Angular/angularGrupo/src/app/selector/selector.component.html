@@ -1,0 +1,9 @@
+<div>
+  <table>
+    <tr *ngFor="let x of colores; let i=index">
+      <td (click)="selectorColor(colores[i])" [style.backgroundColor]="colores[i]"></td>
+      <td (click)="selectorColor(colores2[i])" [style.backgroundColor]="colores2[i]"></td>
+    </tr>
+
+  </table>
+</div>
