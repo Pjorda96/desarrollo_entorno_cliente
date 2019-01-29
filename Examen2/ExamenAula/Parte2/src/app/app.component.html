@@ -4,10 +4,10 @@
 </header>
 <section>
   <!--Aquí muestra en tarjetas a los distintos pokemons -->
-  <div class="card" *ngFor="let x of pokedex; let i=index" (click)="seleccionado()">
+  <div class="card" *ngFor="let x of pokedex; let i=index">
     <div class="card-body">
         <h3 [innerText]="x.id + ' ' + x.ename"></h3>
-        <img [src]="x.url">
+        <img [src]="x.url"  (click)="seleccionado(x.url)">
         <div class="inline-block-elem">
             <h3>Types:</h3>
             <ul>
@@ -19,6 +19,6 @@
 </section>
 <footer>
   <h2>Has escogido a:</h2> 
-  <img  [src]="seleccionado.url">
+  <img [src]="select">
 </footer>
 

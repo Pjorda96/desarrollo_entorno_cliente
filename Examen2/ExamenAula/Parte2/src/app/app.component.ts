@@ -8,14 +8,15 @@ import {pokedex} from './db/pokedex'
 export class AppComponent {
   
   pokedex: any[] = pokedex;
-  seleccionado: any[];
+  select: string = '';
 
   constructor(){
 
   }
 
   seleccionado(event) {
-    this.seleccionado = event;
+    this.select = event;
+    console.log(event);
   }
 
 }
